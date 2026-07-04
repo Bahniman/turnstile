@@ -2,6 +2,35 @@
 
 **Analytics and storefronts for the agent-driven web.**
 
+### ▶ Try the live demo (no installation): https://bahniman.github.io/turnstile.html
+
+---
+
+## In plain English (no jargon)
+
+More and more online shopping is being done by **AI assistants on people's behalf** — they browse, compare prices, and buy. But every online store's analytics quietly assumes its visitors are humans. So stores can't answer a basic question that's becoming very expensive: *how many of my visitors are actually software, and are they buying?*
+
+**Turnstile spots the AI visitors**, shows the store the real breakdown (how many, from which AI platforms, how much they spent), and then serves those AI visitors a clean machine-readable price list instead of a human web page full of pop-ups. The store gets correctly-counted sales; the AI gets clean data and makes fewer mistakes.
+
+The comparison that makes it click: Google search traffic created an $80 billion industry (SEO) built around measuring and optimizing for it. AI-shopper traffic is at that same starting line right now, and nobody is measuring it yet.
+
+<details>
+<summary><b>Jargon decoder</b> (click to expand)</summary>
+
+| Term | What it actually means |
+|---|---|
+| **Agent traffic** | Website visits made by AI software, not a human clicking around. |
+| **Classifier** | The logic that decides "human or AI?" from clues in how the visit behaves. |
+| **Signals** | The clues: does the mouse move? did it load images? how fast did it act? does it announce itself? |
+| **Attribution** | Correctly crediting a sale to its source — e.g. "this purchase came via an AI assistant." |
+| **AEO (Agent Experience Optimization)** | Like SEO, but for AI shoppers: giving them a clean offer they can read, instead of a human page. |
+| **Offer feed** | A simple price + stock list built for machines, at a fixed web address. |
+| **Beacon / snippet** | One line of code a store adds to its site to collect the human-or-AI clues. |
+
+</details>
+
+---
+
 AI agents now browse, compare and buy on their humans' behalf. When software visits instead of a person, every assumption of web commerce quietly breaks: ads go unseen, A/B tests get polluted, funnels stop describing anything real. Ask any e-commerce operator four questions and watch them realize they cannot answer one:
 
 1. What share of my traffic is agents rather than humans?
