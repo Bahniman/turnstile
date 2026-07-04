@@ -14,6 +14,18 @@ More and more online shopping is being done by **AI assistants on people's behal
 
 The comparison that makes it click: Google search traffic created an $80 billion industry (SEO) built around measuring and optimizing for it. AI-shopper traffic is at that same starting line right now, and nobody is measuring it yet.
 
+## The business, concretely
+
+Three expensive failures are already happening on every store, and each one is a paying product:
+
+1. **Recovered false declines.** Fraud filters see "no mouse movement + instant checkout" and decline legitimate delegated purchases. Every one of those is pure lost margin. Turnstile reads the agent's delegation signals and whitelists the verified purchase — recovered revenue the merchant can count.
+2. **Unpolluted data.** Agent sessions poison funnels, A/B tests and ad audiences; retargeting budgets are spent showing ads to software. Filtering the software out means the store optimizes against humans again — and stops paying to advertise to robots.
+3. **A new attributed channel.** Once agent purchases are detected and credited to their platforms, "agent revenue" becomes a line item the merchant can deliberately grow — with the machine-readable offer feed as its storefront.
+
+**Go-to-market:** the free snippet answers one irresistible question — *"what % of your traffic is agents?"* — and a published quarterly benchmark makes every merchant want their own number. Paid tiers: platform attribution + fraud whitelist + offer feed; long-term, basis points on feed-attributed revenue.
+
+**The moat is the labeled corpus:** detection is adversarial and improves with every store on the network. Ten thousand storefronts of labeled agent behavior is not something a latecomer — or a platform building it as a side feature — can download. And the offer feed converts the arms race: being detected gets the agent *better* data than scraping, so adversaries become users.
+
 <details>
 <summary><b>Jargon decoder</b> (click to expand)</summary>
 
