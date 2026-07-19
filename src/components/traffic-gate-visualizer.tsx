@@ -269,7 +269,7 @@ export function TrafficGateVisualizer() {
                       Ent: {s.mouseEntropy}% | {s.requestRate} r/s
                     </span>
                     {s.status === "served_html" ? (
-                      <span className="border border-emerald-500/30 text-emerald-500 bg-emerald-500/5 px-1.5 py-0.5 rounded text-[9px] font-bold">HTML</span>
+                      <span className="border border-transparent text-on-primary-container bg-primary-container px-1.5 py-0.5 rounded text-[9px] font-bold">HTML</span>
                     ) : s.status === "served_json" ? (
                       <span className="border border-primary/30 text-primary bg-primary/5 px-1.5 py-0.5 rounded text-[9px] font-bold">JSON</span>
                     ) : (
@@ -284,7 +284,7 @@ export function TrafficGateVisualizer() {
       </div>
 
       {/* Right Panel: Content Negotiation Showcase */}
-      <div className="lg:col-span-5 border border-[#232329] rounded-lg p-4 bg-[#0C0C0E] relative flex flex-col min-h-[460px] text-zinc-100">
+      <div className="lg:col-span-5 border border-outline-variant rounded-2xl p-4 bg-surface-container-low relative flex flex-col min-h-[460px] text-on-surface">
         {selectedSession ? (() => {
           const isHtml = selectedSession.status === "served_html";
           const isJson = selectedSession.status === "served_json";
@@ -292,29 +292,29 @@ export function TrafficGateVisualizer() {
           
           return (
             <div className="h-full flex flex-col space-y-4">
-              <div className="border-b border-[#232329]/80 pb-3 flex items-center justify-between">
-                <span className="font-mono font-bold text-zinc-100 text-xs">{selectedSession.id} // CONTENT GATEWAY</span>
-                <span className="font-mono text-[9px] uppercase border border-[#232329] px-2 py-0.5 rounded font-bold text-zinc-400">
+              <div className="border-b border-outline-variant pb-3 flex items-center justify-between">
+                <span className="font-mono font-medium text-on-surface text-xs">{selectedSession.id} // CONTENT GATEWAY</span>
+                <span className="font-mono text-[9px] uppercase border border-outline-variant px-2 py-0.5 rounded font-medium text-on-surface-variant">
                   {isHtml ? "HUMAN CLIENT" : isJson ? "AI AGENT CLIENT" : "MALICIOUS"}
                 </span>
               </div>
 
               {/* Note */}
-              <div className="rounded-lg bg-[#141418] border border-[#232329]/60 p-2.5 font-mono text-[10px] text-zinc-400">
-                <span className="text-zinc-100 font-bold">Telemetry Feed:</span> {selectedSession.note}
+              <div className="rounded-lg bg-surface-container-highest border border-transparent p-2.5 font-mono text-[10px] text-on-surface-variant">
+                <span className="text-on-surface font-medium">Telemetry Feed:</span> {selectedSession.note}
               </div>
 
               {/* Viewport content */}
-              <div className="flex-1 bg-[#141418] border border-[#232329]/60 rounded-lg p-3 relative overflow-hidden min-h-[220px] flex items-center justify-center">
+              <div className="flex-1 bg-surface-container-highest border border-transparent rounded-lg p-3 relative overflow-hidden min-h-[220px] flex items-center justify-center">
                 {isBlocked ? (
                   <div className="text-center font-mono space-y-2 p-4 animate-pulse">
                     <EyeOff className="h-8 w-8 mx-auto text-error" />
                     <p className="font-bold text-error">403 FORBIDDEN</p>
-                    <p className="text-[10px] text-zinc-500">Turnstile blocked request. High frequency scraper behavior detected. API key and cookies blacklisted.</p>
+                    <p className="text-[10px] text-on-surface-variant">Turnstile blocked request. High frequency scraper behavior detected. API key and cookies blacklisted.</p>
                   </div>
                 ) : isJson ? (
-                  <div className="w-full h-full flex flex-col font-mono text-[10px] text-zinc-350">
-                    <div className="flex items-center justify-between border-b border-[#232329]/40 pb-1.5 mb-2">
+                  <div className="w-full h-full flex flex-col font-mono text-[10px] text-on-surface-variant">
+                    <div className="flex items-center justify-between border-b border-outline-variant/60 pb-1.5 mb-2">
                       <span>HTTP/1.1 200 OK Content-Type: application/json</span>
                       <span className="text-[9px] text-primary font-bold">AEO OPTIMIZED Feed</span>
                     </div>
@@ -324,24 +324,24 @@ export function TrafficGateVisualizer() {
                   </div>
                 ) : (
                   <div className="w-full h-full flex flex-col">
-                    <div className="flex items-center justify-between border-b border-white/10 pb-1.5 mb-3 font-mono text-[9px] text-zinc-500">
+                    <div className="flex items-center justify-between border-b border-outline-variant pb-1.5 mb-3 font-mono text-[9px] text-on-surface-variant">
                       <span>HTTP/1.1 200 OK Content-Type: text/html</span>
-                      <span className="text-[9px] text-emerald-400 font-bold">Rich User Storefront</span>
+                      <span className="text-[9px] text-primary font-medium">Rich User Storefront</span>
                     </div>
                     
                     {/* Render visual mockup of storefront */}
-                    <div className="bg-[#181820] border border-[#2A2A35] rounded-xl p-3.5 space-y-3.5 font-sans max-w-sm mx-auto shadow-2xl text-white">
-                      <div className="bg-[#21212B] aspect-video rounded-lg flex items-center justify-center border border-[#2E2E3C] relative">
-                        <ShoppingCart className="h-10 w-10 text-zinc-700" />
+                    <div className="bg-surface-container-high border border-transparent rounded-xl p-3.5 space-y-3.5 font-sans max-w-sm mx-auto text-on-surface">
+                      <div className="bg-surface-container aspect-video rounded-lg flex items-center justify-center border border-outline-variant relative">
+                        <ShoppingCart className="h-10 w-10 text-on-surface-variant" />
                         <span className="absolute top-2 left-2 bg-primary text-on-primary text-[9px] font-bold px-2 py-0.5 rounded">NEW ARRIVAL</span>
                       </div>
                       
                       <div className="space-y-1">
                         <div className="flex items-center justify-between">
-                          <h4 className="text-white text-xs font-bold font-sans">Apex Dune Runner v5</h4>
+                          <h4 className="text-on-surface text-xs font-medium font-sans">Apex Dune Runner v5</h4>
                           <span className="text-primary text-xs font-bold">₹7,600</span>
                         </div>
-                        <p className="text-[10px] text-zinc-400">Pro-grade running shoes featuring vulcanized dual soles and carbon plates.</p>
+                        <p className="text-[10px] text-on-surface-variant">Pro-grade running shoes featuring vulcanized dual soles and carbon plates.</p>
                       </div>
 
                       <button className="w-full bg-primary hover:bg-primary/95 text-on-primary rounded-lg p-2.5 text-xs font-bold transition-all cursor-pointer">
@@ -353,7 +353,7 @@ export function TrafficGateVisualizer() {
               </div>
 
               {/* Interface signature details */}
-              <div className="font-mono text-[9px] flex flex-col gap-1 text-zinc-600 border-t border-[#232329]/60 pt-3">
+              <div className="font-mono text-[9px] flex flex-col gap-1 text-on-surface-variant border-t border-outline-variant pt-3">
                 <span>GATEWAY_DECISION: {isBlocked ? "ACTION_DENY_SCRAPER" : isJson ? "ACTION_SERVE_JSON_AEO" : "ACTION_SERVE_HTML"}</span>
                 <span>DATA_PAYLOAD_SIZE: {isBlocked ? "0 bytes" : isJson ? "350 bytes (96% saved)" : "85 KB (Images + DOM)"}</span>
               </div>
