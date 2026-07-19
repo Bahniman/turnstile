@@ -160,17 +160,17 @@ export function TrafficGateVisualizer() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className={`btn-press flex h-8 items-center gap-1.5 rounded-lg px-3 text-xs font-bold transition-all ${
+              className={`flex h-8 items-center gap-1.5 rounded-lg px-3 text-xs font-bold transition-all ${
                 isPlaying 
-                  ? "border border-red-500/30 bg-red-500/10 text-red-500"
-                  : "border border-accent bg-accent text-accent-foreground shadow-[2px_2px_0_#161616]"
+                  ? "border border-error bg-error-container text-on-error-container"
+                  : "border border-outline bg-primary text-on-primary hover:bg-primary/90 active:bg-primary/80"
               }`}
             >
               <Play className="h-3.5 w-3.5" /> {isPlaying ? "Pause Stream" : "Live Stream"}
             </button>
             <button
               onClick={resetSimulator}
-              className="btn-press border border-border bg-foreground/5 hover:bg-foreground/10 text-muted-foreground hover:text-foreground h-8 w-8 rounded-lg flex items-center justify-center"
+              className="border border-outline-variant bg-surface-container-low hover:bg-on-surface/8 text-on-surface-variant hover:text-on-surface h-8 w-8 rounded-lg flex items-center justify-center transition-colors"
               title="Reset Sandbox"
             >
               <RotateCcw className="h-3.5 w-3.5" />
@@ -180,36 +180,36 @@ export function TrafficGateVisualizer() {
 
         {/* Stats */}
         <div className="grid grid-cols-4 gap-2 text-center">
-          <div className="border border-border rounded-xl p-2 bg-foreground/[0.01]">
-            <span className="text-[10px] text-muted-foreground block font-bold uppercase tracking-wider">Humans</span>
-            <span className="text-lg font-bold text-foreground">{stats.humansServed}</span>
+          <div className="border border-outline-variant rounded-lg p-2 bg-surface-container-low">
+            <span className="text-[10px] text-on-surface-variant block font-bold uppercase tracking-wider">Humans</span>
+            <span className="text-lg font-bold text-on-surface">{stats.humansServed}</span>
           </div>
-          <div className="border border-border rounded-xl p-2 bg-foreground/[0.01]">
-            <span className="text-[10px] text-muted-foreground block font-bold uppercase tracking-wider">AI Agents</span>
-            <span className="text-lg font-bold text-blue-500">{stats.agentsServed}</span>
+          <div className="border border-outline-variant rounded-lg p-2 bg-surface-container-low">
+            <span className="text-[10px] text-on-surface-variant block font-bold uppercase tracking-wider">AI Agents</span>
+            <span className="text-lg font-bold text-primary">{stats.agentsServed}</span>
           </div>
-          <div className="border border-border rounded-xl p-2 bg-foreground/[0.01]">
-            <span className="text-[10px] text-muted-foreground block font-bold uppercase tracking-wider">Blocked</span>
-            <span className="text-lg font-bold text-red-500">{stats.crawlersBlocked}</span>
+          <div className="border border-outline-variant rounded-lg p-2 bg-surface-container-low">
+            <span className="text-[10px] text-on-surface-variant block font-bold uppercase tracking-wider">Blocked</span>
+            <span className="text-lg font-bold text-error">{stats.crawlersBlocked}</span>
           </div>
-          <div className="border border-border rounded-xl p-2 bg-foreground/[0.01]">
-            <span className="text-[10px] text-muted-foreground block font-bold uppercase tracking-wider">Revenue</span>
-            <span className="text-sm font-bold text-emerald-500 block truncate mt-1">₹{stats.recoveredRevenue.toLocaleString()}</span>
+          <div className="border border-outline-variant rounded-lg p-2 bg-surface-container-low">
+            <span className="text-[10px] text-on-surface-variant block font-bold uppercase tracking-wider">Revenue</span>
+            <span className="text-sm font-bold text-primary block truncate mt-1">₹{stats.recoveredRevenue.toLocaleString()}</span>
           </div>
         </div>
 
         {/* Threshold Rules */}
-        <div className="border border-border rounded-xl p-4 bg-foreground/[0.01] space-y-4 font-mono text-xs">
-          <div className="flex items-center justify-between border-b border-border/40 pb-2">
+        <div className="border border-outline-variant rounded-lg p-4 bg-surface-container-low space-y-4 font-mono text-xs">
+          <div className="flex items-center justify-between border-b border-outline-variant/60 pb-2">
             <span className="font-bold text-foreground">GATE CLASSIFIER POLICIES</span>
-            <span className="text-[9px] text-muted-foreground">ACTIVE GATEWAYS</span>
+            <span className="text-[9px] text-on-surface-variant">ACTIVE GATEWAYS</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Slider 1 */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-[11px]">
-                <span className="text-muted-foreground">Mouse Entropy Threshold:</span>
+                <span className="text-on-surface-variant">Mouse Entropy Threshold:</span>
                 <span className="text-foreground font-bold">{entropyThreshold}%</span>
               </div>
               <input 
@@ -218,15 +218,15 @@ export function TrafficGateVisualizer() {
                 max="50" 
                 value={entropyThreshold} 
                 onChange={(e) => setEntropyThreshold(Number(e.target.value))}
-                className="w-full accent-blue-600 h-1 bg-border rounded-lg appearance-none cursor-pointer"
+                className="w-full accent-primary h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer"
               />
-              <span className="text-[9px] text-muted-foreground/60 block">Sessions with mouse entropy below this are classified as agents.</span>
+              <span className="text-[9px] text-on-surface-variant/60 block">Sessions with mouse entropy below this are classified as agents.</span>
             </div>
 
             {/* Slider 2 */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-[11px]">
-                <span className="text-muted-foreground">Rate Limit Block:</span>
+                <span className="text-on-surface-variant">Rate Limit Block:</span>
                 <span className="text-foreground font-bold">{rateLimitThreshold} req/s</span>
               </div>
               <input 
@@ -235,16 +235,16 @@ export function TrafficGateVisualizer() {
                 max="50" 
                 value={rateLimitThreshold} 
                 onChange={(e) => setRateLimitThreshold(Number(e.target.value))}
-                className="w-full accent-red-600 h-1 bg-border rounded-lg appearance-none cursor-pointer"
+                className="w-full accent-error h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer"
               />
-              <span className="text-[9px] text-muted-foreground/60 block">Rate limits above this get permanently blocked as scrapers.</span>
+              <span className="text-[9px] text-on-surface-variant/60 block">Rate limits above this get permanently blocked as scrapers.</span>
             </div>
           </div>
         </div>
 
         {/* Live Logs */}
-        <div className="border border-border rounded-xl p-3 bg-[#0A0A0B] flex-1 min-h-[220px]">
-          <span className="font-mono text-[9px] uppercase font-bold text-muted-foreground block border-b border-border/40 pb-1.5 mb-2">Live Session Logs</span>
+        <div className="border border-outline-variant rounded-lg p-3 bg-surface-container-high flex-1 min-h-[220px]">
+          <span className="font-mono text-[9px] uppercase font-bold text-on-surface-variant block border-b border-outline-variant/60 pb-1.5 mb-2">Live Session Logs</span>
           <div className="space-y-2 max-h-[240px] overflow-y-auto pr-1">
             {sessions.map((s) => {
               const isSelected = selectedSession?.id === s.id;
@@ -255,25 +255,25 @@ export function TrafficGateVisualizer() {
                   onClick={() => setSelectedSession(s)}
                   className={`w-full text-left p-2.5 rounded-lg border font-mono text-[11px] flex items-center justify-between transition-colors ${
                     isSelected
-                      ? "border-blue-500 bg-blue-500/5 text-foreground font-semibold"
-                      : "border-border/40 hover:bg-foreground/5 text-muted-foreground hover:text-foreground"
+                      ? "border-primary bg-primary-container text-on-primary-container font-semibold"
+                      : "border-outline-variant hover:bg-on-surface/8 text-on-surface-variant hover:text-on-surface"
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-muted-foreground/60">{s.time}</span>
+                    <span className="text-on-surface-variant/60">{s.time}</span>
                     <span className="text-foreground font-bold">{s.id}</span>
                     <span className="truncate max-w-[120px] sm:max-w-[180px]">{s.userAgent}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="hidden sm:inline text-[9px] text-muted-foreground/70">
+                    <span className="hidden sm:inline text-[9px] text-on-surface-variant/70">
                       Ent: {s.mouseEntropy}% | {s.requestRate} r/s
                     </span>
                     {s.status === "served_html" ? (
-                      <span className="border border-emerald-500/30 text-emerald-400 bg-emerald-500/5 px-1.5 py-0.5 rounded text-[9px] font-bold">HTML</span>
+                      <span className="border border-emerald-500/30 text-emerald-500 bg-emerald-500/5 px-1.5 py-0.5 rounded text-[9px] font-bold">HTML</span>
                     ) : s.status === "served_json" ? (
-                      <span className="border border-blue-500/30 text-blue-400 bg-blue-500/5 px-1.5 py-0.5 rounded text-[9px] font-bold">JSON</span>
+                      <span className="border border-primary/30 text-primary bg-primary/5 px-1.5 py-0.5 rounded text-[9px] font-bold">JSON</span>
                     ) : (
-                      <span className="border border-red-500/30 text-red-400 bg-red-500/5 px-1.5 py-0.5 rounded text-[9px] font-bold">BLOCK</span>
+                      <span className="border border-error/30 text-error bg-error/5 px-1.5 py-0.5 rounded text-[9px] font-bold">BLOCK</span>
                     )}
                   </div>
                 </button>
@@ -284,12 +284,7 @@ export function TrafficGateVisualizer() {
       </div>
 
       {/* Right Panel: Content Negotiation Showcase */}
-      <div className="lg:col-span-5 border border-border rounded-xl p-4 bg-[#0A0A0B] relative flex flex-col min-h-[460px]">
-        <div className="absolute top-2 right-2 w-4 h-1 border-t border-r border-border/60" />
-        <div className="absolute bottom-2 right-2 w-4 h-1 border-b border-r border-border/60" />
-        <div className="absolute top-2 left-2 w-4 h-1 border-t border-l border-border/60" />
-        <div className="absolute bottom-2 left-2 w-4 h-1 border-b border-l border-border/60" />
-
+      <div className="lg:col-span-5 border border-outline-variant rounded-lg p-4 bg-surface-container-high relative flex flex-col min-h-[460px]">
         {selectedSession ? (() => {
           const isHtml = selectedSession.status === "served_html";
           const isJson = selectedSession.status === "served_json";
@@ -297,31 +292,31 @@ export function TrafficGateVisualizer() {
           
           return (
             <div className="h-full flex flex-col space-y-4">
-              <div className="border-b border-border/40 pb-3 flex items-center justify-between">
+              <div className="border-b border-outline-variant/60 pb-3 flex items-center justify-between">
                 <span className="font-mono font-bold text-foreground text-xs">{selectedSession.id} // CONTENT GATEWAY</span>
-                <span className="font-mono text-[9px] uppercase border border-border px-2 py-0.5 rounded font-bold text-muted-foreground">
+                <span className="font-mono text-[9px] uppercase border border-outline-variant px-2 py-0.5 rounded font-bold text-on-surface-variant">
                   {isHtml ? "HUMAN CLIENT" : isJson ? "AI AGENT CLIENT" : "MALICIOUS"}
                 </span>
               </div>
 
               {/* Note */}
-              <div className="rounded-lg bg-foreground/[0.02] border border-border/40 p-2.5 font-mono text-[10px] text-muted-foreground">
+              <div className="rounded-lg bg-surface-container-low border border-outline-variant/60 p-2.5 font-mono text-[10px] text-on-surface-variant">
                 <span className="text-foreground font-bold">Telemetry Feed:</span> {selectedSession.note}
               </div>
 
               {/* Viewport content */}
-              <div className="flex-1 bg-black/40 border border-border/60 rounded-lg p-3 relative overflow-hidden min-h-[220px] flex items-center justify-center">
+              <div className="flex-1 bg-surface-container border border-outline-variant/60 rounded-lg p-3 relative overflow-hidden min-h-[220px] flex items-center justify-center">
                 {isBlocked ? (
                   <div className="text-center font-mono space-y-2 p-4 animate-pulse">
-                    <EyeOff className="h-8 w-8 mx-auto text-red-500/80" />
-                    <p className="font-bold text-red-500">403 FORBIDDEN</p>
-                    <p className="text-[10px] text-zinc-500">Turnstile blocked request. High frequency scraper behavior detected. API key and cookies blacklisted.</p>
+                    <EyeOff className="h-8 w-8 mx-auto text-error" />
+                    <p className="font-bold text-error">403 FORBIDDEN</p>
+                    <p className="text-[10px] text-on-surface-variant">Turnstile blocked request. High frequency scraper behavior detected. API key and cookies blacklisted.</p>
                   </div>
                 ) : isJson ? (
-                  <div className="w-full h-full flex flex-col font-mono text-[10px] text-zinc-400">
-                    <div className="flex items-center justify-between border-b border-border/20 pb-1.5 mb-2">
+                  <div className="w-full h-full flex flex-col font-mono text-[10px] text-on-surface-variant">
+                    <div className="flex items-center justify-between border-b border-outline-variant/40 pb-1.5 mb-2">
                       <span>HTTP/1.1 200 OK Content-Type: application/json</span>
-                      <span className="text-[9px] text-blue-400 font-bold">AEO OPTIMIZED Feed</span>
+                      <span className="text-[9px] text-primary font-bold">AEO OPTIMIZED Feed</span>
                     </div>
                     <pre className="flex-1 overflow-auto max-h-[230px] scrollbar-thin select-all">
                       {getProductJSON(selectedSession)}
@@ -335,21 +330,21 @@ export function TrafficGateVisualizer() {
                     </div>
                     
                     {/* Render visual mockup of storefront */}
-                    <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-3.5 space-y-3.5 font-sans max-w-sm mx-auto shadow-xl">
-                      <div className="bg-zinc-850 aspect-video rounded-lg flex items-center justify-center border border-zinc-800 relative">
-                        <ShoppingCart className="h-10 w-10 text-zinc-700" />
-                        <span className="absolute top-2 left-2 bg-[#000DFF] text-white text-[9px] font-bold px-2 py-0.5 rounded">NEW ARRIVAL</span>
+                    <div className="bg-surface-container border border-outline-variant rounded-lg p-3.5 space-y-3.5 font-sans max-w-sm mx-auto shadow-sm">
+                      <div className="bg-surface-container-high aspect-video rounded-lg flex items-center justify-center border border-outline-variant relative">
+                        <ShoppingCart className="h-10 w-10 text-on-surface-variant/40" />
+                        <span className="absolute top-2 left-2 bg-primary text-on-primary text-[9px] font-bold px-2 py-0.5 rounded">NEW ARRIVAL</span>
                       </div>
                       
                       <div className="space-y-1">
                         <div className="flex items-center justify-between">
-                          <h4 className="text-white text-xs font-bold font-sans">Apex Dune Runner v5</h4>
-                          <span className="text-emerald-400 text-xs font-bold">₹7,600</span>
+                          <h4 className="text-foreground text-xs font-bold font-sans">Apex Dune Runner v5</h4>
+                          <span className="text-primary text-xs font-bold">₹7,600</span>
                         </div>
-                        <p className="text-[10px] text-zinc-400">Pro-grade running shoes featuring vulcanized dual soles and carbon plates.</p>
+                        <p className="text-[10px] text-on-surface-variant">Pro-grade running shoes featuring vulcanized dual soles and carbon plates.</p>
                       </div>
 
-                      <button className="w-full bg-[#000DFF] hover:bg-blue-700 text-white rounded-lg p-2 text-xs font-bold transition-all hover:scale-[1.02]">
+                      <button className="w-full bg-primary hover:bg-primary/90 text-on-primary rounded-lg p-2 text-xs font-bold transition-all">
                         Purchase Item
                       </button>
                     </div>
@@ -358,7 +353,7 @@ export function TrafficGateVisualizer() {
               </div>
 
               {/* Interface signature details */}
-              <div className="font-mono text-[9px] flex flex-col gap-1 text-muted-foreground/50 border-t border-border/40 pt-3">
+              <div className="font-mono text-[9px] flex flex-col gap-1 text-on-surface-variant/50 border-t border-outline-variant/60 pt-3">
                 <span>GATEWAY_DECISION: {isBlocked ? "ACTION_DENY_SCRAPER" : isJson ? "ACTION_SERVE_JSON_AEO" : "ACTION_SERVE_HTML"}</span>
                 <span>DATA_PAYLOAD_SIZE: {isBlocked ? "0 bytes" : isJson ? "350 bytes (96% saved)" : "85 KB (Images + DOM)"}</span>
               </div>

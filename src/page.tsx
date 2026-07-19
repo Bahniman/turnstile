@@ -98,11 +98,11 @@ export default function LandingPage() {
           </section>
 
           {/* Detailed Problem Statement (Error Container style for urgency) */}
-          <section className="rounded-[16px] bg-[#F9DEDC] dark:bg-[#8C1D18] p-6 space-y-4">
-            <h3 className="text-title-lg font-medium text-[#410E0B] dark:text-[#F9DEDC] inline-flex items-center gap-2">
+          <section className="rounded-lg bg-error-container p-6 space-y-4">
+            <h3 className="text-title-lg font-medium text-on-error-container inline-flex items-center gap-2">
               <ShieldAlert className="h-5 w-5" /> Why Legacy Fraud Engines Block Valid Purchases
             </h3>
-            <p className="text-body-lg text-[#410E0B] dark:text-[#F9DEDC] leading-relaxed">
+            <p className="text-body-lg text-on-error-container leading-relaxed">
               Modern fraud suites analyze mouse movements, keystroke delays, and viewport triggers to block malicious bots. When a customer delegates a shopping task to an agent, the agent accesses the page using headless drivers—resulting in <strong>instant keystrokes and zero mouse traces</strong>. Legacy filters flags these as card-not-present fraud, declining legitimate orders. 
               <br /><br />
               Turnstile provides a cryptographic signature framework that allows agents to authenticate themselves cleanly, whitelisting valid purchases while isolating web-scrapers and crawlers.
