@@ -24,7 +24,7 @@ export default function LandingPage() {
     <div className="relative min-h-screen bg-surface text-on-surface font-sans">
       
       {/* M3 Top App Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-surface border-b border-border">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-outline-variant/50 bg-surface/80 backdrop-blur-xl backdrop-saturate-150">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex items-center justify-between h-16">
             <a href="#" className="flex items-center gap-2.5">
@@ -60,10 +60,10 @@ export default function LandingPage() {
           
           {/* M3 Hero Section */}
           <section className="space-y-6 text-left">
-            <div className="inline-flex items-center gap-2 rounded-full bg-surface-container-high px-4 py-1.5 text-label-lg font-medium text-primary">
+            <div className="inline-flex items-center gap-2 rounded-lg border border-primary/25 bg-primary-container/40 px-4 py-2 text-label-lg font-medium text-primary transition-all duration-500 ease-[cubic-bezier(0.34,1.42,0.64,1)] hover:rounded-full">
               <Award className="h-4 w-4" /> Startup Lab · Machine commerce engine
             </div>
-            <h1 className="text-4xl leading-tight md:text-[57px] md:leading-[64px] font-normal text-on-surface">
+            <h1 className="text-[42px] leading-[48px] md:text-[60px] md:leading-[66px] font-medium tracking-[-1.2px] text-on-surface">
               Commerce analytics<br />for the agent era.
             </h1>
             <p className="text-title-lg leading-relaxed text-on-surface-variant max-w-[760px]">
@@ -73,7 +73,7 @@ export default function LandingPage() {
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <a
                 href="#demo"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-label-lg font-medium hover:bg-[color-mix(in_srgb,var(--md-sys-color-on-primary)_8%,var(--md-sys-color-primary))] transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-primary text-on-primary px-6 py-3 text-label-lg font-medium hover:bg-[color-mix(in_srgb,var(--md-sys-color-on-primary)_8%,var(--md-sys-color-primary))] transition-colors"
               >
                 Try Interactive Demo <ArrowRight className="h-4 w-4" />
               </a>
@@ -91,7 +91,7 @@ export default function LandingPage() {
           {/* M3 Stats Bar (Outlined Cards) */}
           <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((s, idx) => (
-              <div key={idx} className="rounded-[12px] border border-border bg-surface p-6 hover:bg-surface-container-low transition-colors">
+              <div key={idx} className="group rounded-[16px] border border-outline-variant/60 bg-surface-container-low p-6 transition-all duration-500 ease-[cubic-bezier(0.34,1.42,0.64,1)] hover:-translate-y-1 hover:rounded-[24px] hover:border-primary/40 hover:bg-surface-container-high hover:shadow-lg">
                 <span className="text-headline-md font-medium text-primary">{s.num}</span>
                 <p className="mt-2 text-body-md text-on-surface-variant leading-relaxed">{s.desc}</p>
               </div>
@@ -99,11 +99,11 @@ export default function LandingPage() {
           </section>
 
           {/* Detailed Problem Statement (Error Container style for urgency) */}
-          <section className="rounded-lg bg-error-container p-6 space-y-4">
-            <h3 className="text-title-lg font-medium text-on-error-container inline-flex items-center gap-2">
+          <section className="relative overflow-hidden rounded-[20px] border border-error/25 bg-surface-container-low p-7 pl-8 space-y-4 before:absolute before:inset-y-0 before:left-0 before:w-1.5 before:bg-error before:content-['']">
+            <h3 className="text-title-lg font-medium text-error inline-flex items-center gap-2">
               <ShieldAlert className="h-5 w-5" /> Why Legacy Fraud Engines Block Valid Purchases
             </h3>
-            <p className="text-body-lg text-on-error-container leading-relaxed">
+            <p className="text-body-lg text-on-surface-variant leading-relaxed">
               Modern fraud suites analyze mouse movements, keystroke delays, and viewport triggers to block malicious bots. When a customer delegates a shopping task to an agent, the agent accesses the page using headless drivers—resulting in <strong>instant keystrokes and zero mouse traces</strong>. Legacy filters flags these as card-not-present fraud, declining legitimate orders. 
               <br /><br />
               Turnstile provides a cryptographic signature framework that allows agents to authenticate themselves cleanly, whitelisting valid purchases while isolating web-scrapers and crawlers.
@@ -126,21 +126,21 @@ export default function LandingPage() {
           <section className="space-y-6 pt-8 border-t border-border">
             <h2 className="text-headline-lg font-normal text-on-surface">Core Components</h2>
             <div className="grid gap-6 sm:grid-cols-3">
-              <div className="rounded-[16px] bg-surface-container p-6 space-y-4">
+              <div className="rounded-[16px] bg-surface-container p-6 space-y-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.42,0.64,1)] hover:-translate-y-1 hover:rounded-[28px] hover:bg-surface-container-high">
                 <TrendingUp className="h-8 w-8 text-primary" />
                 <h4 className="text-title-lg font-medium text-on-surface">1. Traffic Classifier</h4>
                 <p className="text-body-md text-on-surface-variant leading-relaxed">
                   Passively scores behavioral indicators (scrolling cadence, asset loading, cookie consent timeouts) to separate human shoppers from software agents without blocking.
                 </p>
               </div>
-              <div className="rounded-[16px] bg-surface-container p-6 space-y-4">
+              <div className="rounded-[16px] bg-surface-container p-6 space-y-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.42,0.64,1)] hover:-translate-y-1 hover:rounded-[28px] hover:bg-surface-container-high">
                 <EyeOff className="h-8 w-8 text-primary" />
                 <h4 className="text-title-lg font-medium text-on-surface">2. Clean Attribution</h4>
                 <p className="text-body-md text-on-surface-variant leading-relaxed">
                   Attributes purchases and engagement directly to the delegating agent. Prevents analytics corruption, keeping A/B test funnels clean and advertising budgets targeted.
                 </p>
               </div>
-              <div className="rounded-[16px] bg-surface-container p-6 space-y-4">
+              <div className="rounded-[16px] bg-surface-container p-6 space-y-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.42,0.64,1)] hover:-translate-y-1 hover:rounded-[28px] hover:bg-surface-container-high">
                 <ShoppingBag className="h-8 w-8 text-primary" />
                 <h4 className="text-title-lg font-medium text-on-surface">3. Agent Storefront</h4>
                 <p className="text-body-md text-on-surface-variant leading-relaxed">
@@ -152,7 +152,7 @@ export default function LandingPage() {
 
           {/* Business Model (Filled Cards) */}
           <section className="grid gap-6 md:grid-cols-2 pt-8 border-t border-border">
-            <div className="rounded-[16px] bg-surface-container-low p-6 space-y-4">
+            <div className="rounded-[16px] bg-surface-container-low p-6 space-y-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.42,0.64,1)] hover:-translate-y-1 hover:rounded-[28px] hover:bg-surface-container">
               <h3 className="text-headline-md font-normal text-on-surface">Merchant Benefits</h3>
               <ul className="space-y-4 text-body-md text-on-surface-variant">
                 <li className="flex items-start gap-3">
@@ -170,7 +170,7 @@ export default function LandingPage() {
               </ul>
             </div>
 
-            <div className="rounded-[16px] bg-surface-container-low p-6 space-y-4">
+            <div className="rounded-[16px] bg-surface-container-low p-6 space-y-4 transition-all duration-500 ease-[cubic-bezier(0.34,1.42,0.64,1)] hover:-translate-y-1 hover:rounded-[28px] hover:bg-surface-container">
               <h3 className="text-headline-md font-normal text-on-surface">Moat & Revenue</h3>
               <p className="text-body-md text-on-surface-variant leading-relaxed">
                 Free client snippet spreads as a diagnostic tool. Paid tiers offer agent-specific whitelisting, AEO feeds, and billing options. Our primary moat is our compounding corpus of labeled traffic: the classifier's detection accuracy grows with every store on our network, locking out late competitors.
