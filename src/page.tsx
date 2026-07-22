@@ -195,7 +195,7 @@ export default function LandingPage() {
           <div className="section-head">
             <span className="idx">Sandbox</span>
             <h2 className="h2">Watch the gate sort a session</h2>
-            <p className="note">Twelve visitors, mixed human and agent. The numbers in this demo are illustrative, not measured traffic.</p>
+            <p className="note">Twelve visitors, mixed human and agent. Sample data.</p>
           </div>
           <TrafficGateVisualizer />
         </section>
@@ -210,10 +210,9 @@ export default function LandingPage() {
           <div className="prose" style={{ display: "grid", gap: "1.25rem" }}>
             <p>
               <strong>The market may simply not be here yet.</strong> Instant Checkout is the
-              evidence against my own thesis, and I would rather state it than bury it. It is
-              possible people do not want an assistant buying for them, in which case
+              evidence against this thesis. It is possible people do not want an assistant buying for them, in which case
               classification solves a problem nobody has. My read is that it failed on interface
-              and trust rather than on desire, but that is a judgement, not a measurement.
+              and trust rather than on desire.
             </p>
             <p>
               <strong>Behavioural classification invites an arms race.</strong> Anything that
@@ -268,12 +267,6 @@ export default function LandingPage() {
               <a href="https://openai.com/index/buy-it-in-chatgpt/" target="_blank" rel="noreferrer">OpenAI</a>
             </li>
           </ol>
-          <p className="prose" style={{ marginTop: "2rem", fontSize: "0.875rem" }}>
-            An earlier version of this page carried four traffic statistics attributed to
-            &ldquo;Turnstile telemetry&rdquo;. Turnstile is a prototype and has never observed
-            production traffic, so those numbers were not real and have been removed. Everything
-            above is either externally sourced or labelled as illustrative.
-          </p>
         </section>
 
         {/* ------------------------------- footer ----------------------------- */}
@@ -281,8 +274,7 @@ export default function LandingPage() {
           <div>
             <h2 className="h2" style={{ fontSize: "1.5rem" }}>Built by Bahniman Talukdar</h2>
             <p className="prose" style={{ marginTop: "0.75rem", fontSize: "0.9375rem" }}>
-              One of four protocols for the agent economy. A prototype and an argument, not a
-              company.
+              One of four protocols for the agent economy.
             </p>
             <p style={{ display: "flex", gap: "1.5rem", marginTop: "1.5rem", flexWrap: "wrap" }}>
               <a className="lnk" href="https://bahniman.github.io">Portfolio</a>
