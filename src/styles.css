@@ -376,3 +376,112 @@ hr { border: 0; height: 1px; background: var(--md-sys-color-outline-variant); }
 .src li { font-size: 0.875rem; color: var(--ink-2); line-height: 1.55; }
 .src li a { border-bottom: 1px solid var(--rule-strong); }
 .src li a:hover { border-bottom-color: var(--mark); color: var(--mark); }
+
+/* ===== DOMAIN SKIN ===== */
+
+:root, .dark {
+  --md-sys-color-surface: #0A0C10;
+  --md-sys-color-on-surface: #C9D4E8;
+  --md-sys-color-on-surface-variant: #7E8CA6;
+  --md-sys-color-outline: #2A3244;
+  --md-sys-color-outline-variant: #1B2130;
+  --md-sys-color-surface-container-lowest: #070910;
+  --md-sys-color-surface-container-low: #0D1017;
+  --md-sys-color-surface-container: #11151F;
+  --md-sys-color-surface-container-high: #161B27;
+  --md-sys-color-surface-container-highest: #1C2230;
+  --md-sys-color-primary: #6E8BFF;
+  --md-sys-color-on-primary: #05070D;
+  --md-sys-color-primary-container: #17203A;
+  --md-sys-color-on-primary-container: #AFC0FF;
+  --font-sans: "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --sig: #6E8BFF;
+  --ok: #4ADE80;
+  --warn: #FBBF24;
+}
+html { color-scheme: dark; }
+body {
+  font-family: var(--font-mono);
+  font-size: 14px; line-height: 1.7; letter-spacing: 0;
+  font-variation-settings: normal;
+}
+
+/* Terminals have no display type. Hierarchy comes from case, weight and rules. */
+.display {
+  font-family: var(--font-mono) !important;
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem) !important;
+  line-height: 1.25 !important; font-weight: 700 !important;
+  letter-spacing: -0.02em !important; text-transform: none;
+  font-variation-settings: normal !important;
+}
+.display::after {
+  content: "_"; color: var(--sig);
+  animation: cur 1.1s steps(1) infinite;
+}
+@keyframes cur { 0%,50% { opacity: 1 } 51%,100% { opacity: 0 } }
+
+.h2 {
+  font-family: var(--font-mono) !important;
+  font-size: clamp(1.05rem, 1.9vw, 1.35rem) !important;
+  font-weight: 700 !important; letter-spacing: 0.02em !important;
+  text-transform: uppercase; line-height: 1.3 !important;
+  font-variation-settings: normal !important;
+}
+.h2::before { content: "> "; color: var(--sig); }
+h3, .row .title { font-family: var(--font-mono) !important; font-size: 0.9375rem !important; font-weight: 700 !important; letter-spacing: 0 !important; }
+.lede, .prose, .row .desc, .table td { font-size: 0.8125rem; line-height: 1.75; }
+.lede { max-width: 72ch; }
+
+/* Boxed regions, sharp corners, visible structure */
+.section-head { border-bottom: 1px dashed var(--md-sys-color-outline); }
+.section-head .idx { color: var(--sig); }
+.section-head .idx::before { content: "["; } .section-head .idx::after { content: "]"; }
+.meta { border: 1px solid var(--md-sys-color-outline); padding: 0 0.9rem; }
+.meta > div { border-bottom: 1px dashed var(--md-sys-color-outline-variant); }
+.meta > div:last-child { border-bottom: 0; }
+.meta dt::after { content: ":"; }
+.row { border-bottom: 1px dashed var(--md-sys-color-outline); }
+.row .num::before { content: "["; } .row .num::after { content: "]"; }
+.row:hover { background: #0F131C; }
+.table th { border-bottom: 1px solid var(--md-sys-color-outline); text-transform: uppercase; }
+.table td { border-bottom: 1px dashed var(--md-sys-color-outline-variant); }
+.table td.n { color: var(--sig); }
+
+/* The statement inverts, like a highlighted selection */
+.statement { background: var(--sig) !important; color: #05070D !important; }
+.statement .line {
+  font-family: var(--font-mono) !important; font-weight: 700 !important;
+  font-size: clamp(1.15rem, 2.4vw, 1.75rem) !important; letter-spacing: -0.01em !important;
+  max-width: 58ch !important; font-variation-settings: normal !important;
+}
+.statement .by { color: #05070D !important; opacity: 0.75; }
+
+/* Actions read as commands */
+a[class*="bg-primary"] {
+  background: var(--sig) !important; color: #05070D !important;
+  border-radius: 0 !important; font-weight: 700;
+}
+a[class*="border-outline"] { border-radius: 0 !important; border-color: var(--md-sys-color-outline) !important; }
+a[class*="border-outline"]::before { content: "$ "; color: var(--sig); }
+.src li a, .lnk { border-bottom-color: var(--md-sys-color-outline); }
+header { border-bottom: 1px solid var(--md-sys-color-outline) !important; background: #0A0C10 !important; backdrop-filter: none !important; }
+* { border-radius: 0 !important; }
+
+/* --- skin fixes --- */
+
+/* Tailwind inlines @theme values at build time: override the utility itself */
+.font-sans, .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace !important; }
+.row .desc, .prose, .lede { font-size: 0.875rem; }
+
+/* outrank the shared block's two-attribute selector */
+a[class*="rounded"][class*="bg-primary"],
+button[class*="rounded"][class*="bg-primary"] {
+  background: var(--sig) !important;
+  color: #05070D !important;
+  font-weight: 700;
+}
+a[class*="rounded"][class*="bg-primary"]:hover,
+button[class*="rounded"][class*="bg-primary"]:hover {
+  background: #8AA2FF !important; filter: none;
+}
