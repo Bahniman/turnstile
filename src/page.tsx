@@ -1,10 +1,11 @@
 import { TrafficGateVisualizer } from "@/components/traffic-gate-visualizer";
+import { TrafficRoutingBoard } from "@/components/traffic-routing-board";
 import { JargonDecoder } from "@/components/jargon-decoder";
 import { SuiteHeader } from "@/components/suite-header";
 
 export default function LandingPage() {
   return (
-    <div className="relative min-h-screen bg-surface text-on-surface font-sans">
+    <div className="turnstile-page relative min-h-screen bg-surface text-on-surface font-sans">
 
       <SuiteHeader name="Turnstile" sections={[
         { label: "The gap", href: "#problem" },
@@ -18,32 +19,27 @@ export default function LandingPage() {
         {/* ------------------------------ opening ----------------------------- */}
         <section className="shell section hero-grid">
           <div>
-            <h1 className="display">Commerce analytics<span className="hero-accent">for the agent era.</span></h1>
+            <h1 className="display">Commerce <span className="headline-ink">analytics</span><span className="hero-accent">for the agent era.</span></h1>
             <p className="lede">
               Shopping assistants can browse for people. Stores may need ways to distinguish
               delegated shopping from other automated visits.
             </p>
             <p className="hero-note">Concept demo · fixed sample sessions · no live traffic or checkout.</p>
             <div className="hero-cta">
-              <a href="#demo" className="inline-flex items-center gap-2 rounded bg-primary px-6 py-3 text-label-lg font-medium text-on-primary">
+              <a href="#demo" className="suite-press inline-flex items-center gap-2 rounded bg-primary px-6 py-3 text-label-lg font-medium text-on-primary">
                 Try the gate
               </a>
-              <a href="#problem" className="inline-flex items-center gap-2 rounded border border-outline px-6 py-3 text-label-lg font-medium">
+              <a href="#problem" className="suite-press inline-flex items-center gap-2 rounded border border-outline px-6 py-3 text-label-lg font-medium">
                 Read the argument
               </a>
             </div>
           </div>
 
-          <dl className="meta">
-            <div><dt>Layer</dt><dd>Commerce</dd></div>
-            <div><dt>Status</dt><dd>Client-side concept prototype · MIT licensed</dd></div>
-            <div><dt>Context</dt><dd>Explores recognition and readable offers alongside payment protocols</dd></div>
-            <div><dt>Part of</dt><dd>Four prototypes exploring the agent economy</dd></div>
-          </dl>
+          <TrafficRoutingBoard />
         </section>
 
         {/* ----------------------------- statement ---------------------------- */}
-        <section className="statement">
+        <section className="statement suite-reveal">
           <div className="shell">
             <p className="line">Payment rails exist. Recognising delegated traffic is a separate task.</p>
             <p className="by">
