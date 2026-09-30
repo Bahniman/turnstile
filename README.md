@@ -9,14 +9,14 @@ Turnstile is a concept about storefront analytics for delegated shopping. The we
 ## Explore the site
 
 - **Protocol context:** a short overview of payment-protocol developments and the separate questions around storefront traffic and offers.
-- **Session-classification sandbox:** inspect the six sample sessions and adjust local illustrative rules to see how their displayed classifications change.
+- **Routing-board illustration:** see fixed person, shopping-agent, and scraper examples paired with their default HTML, JSON, and blocked outcomes. The separate session sandbox lets you inspect six fixtures and adjust local rules to change their displayed classifications.
 - **Product hypotheses and limits:** review possible merchant questions, failure cases, and source links.
 
 No result on the site measures a live store or establishes classification accuracy, merchant demand, sales attribution, or conversion effects.
 
 ## Design and accessibility
 
-Turnstile uses the shared Riso Poster visual system and responsive project header used by Realium, Heirloom, and Windtunnel. Section links sit in the header on wide screens and move into a native disclosure menu on smaller screens. The header links the companion projects and source; the theme toggle stores the light/dark selection locally.
+Turnstile uses the shared Riso Poster visual system and responsive project header used by Realium, Heirloom, and Windtunnel. Its routing-board hero presents three fixed examples under default local rules; it is a static preview, while the six-session sandbox below owns selectable examples and adjustable thresholds. Section links move into a native disclosure menu on smaller screens, and the theme choice is saved locally. Wheel input uses smooth scrolling, while touch gestures and the browser scrollbar remain native. Section links update the URL fragment, move focus to the destination, and support browser back/forward. The header marks the current section and shows reading progress. A back-to-top link returns focus to the main content. Reduced-motion preferences show the route diagram without its entrance animation.
 
 The page includes a skip link, semantic sections, labeled controls, keyboard-operable options with pressed states, and reduced-motion styling. These are implemented features, not a formal accessibility certification.
 
@@ -49,10 +49,13 @@ The repository also contains local Python modules for signal classification, sam
 ## Source map
 
 - `src/page.tsx` — website content and framing.
-- `src/components/traffic-gate-visualizer.tsx` — local sample-session sandbox.
+- `src/components/traffic-routing-board.tsx` — fixed illustrative routes using three sample signal/outcome pairs.
+- `src/components/traffic-gate-visualizer.tsx` — local six-session sandbox.
 - `src/lib/traffic-model.ts` — website demo rules and fixtures.
 - `turnstile/detection.py`, `turnstile/analytics.py`, `turnstile/offers.py` — local Python prototype modules.
 - `snippet/turnstile.js`, `demo.py` — example beacon and CLI walkthrough.
+- `src/components/suite-header.tsx`, `src/components/suite-motion.tsx` — shared project navigation, anchor focus/history, active-section state, progress, and back-to-top behavior.
+- `src/riso-tokens.css`, `src/riso-suite.css`, `src/riso-motion.css` — shared Riso tokens, components, and motion/reduced-motion rules.
 - `vite.config.ts` — `/turnstile/` base path and `docs/` build output.
 
 ## License
