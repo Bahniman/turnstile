@@ -1,41 +1,30 @@
-import { ThemeToggle } from "@/components/theme-toggle";
 import { TrafficGateVisualizer } from "@/components/traffic-gate-visualizer";
 import { JargonDecoder } from "@/components/jargon-decoder";
+import { SuiteHeader } from "@/components/suite-header";
 
 export default function LandingPage() {
   return (
     <div className="relative min-h-screen bg-surface text-on-surface font-sans">
 
-      {/* ------------------------------ masthead ------------------------------ */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-outline-variant/50 bg-surface/80 backdrop-blur-xl backdrop-saturate-150">
-        <div className="shell">
-          <div className="flex items-center justify-between h-16">
-            <a href="https://bahniman.github.io" className="flex items-center gap-2.5">
-              <span className="inline-block h-[7px] w-[7px] bg-primary" />
-              <span className="text-[1.0625rem] font-extrabold tracking-[-0.02em]">Turnstile</span>
-            </a>
-            <nav className="flex items-center gap-5">
-              <a href="https://bahniman.github.io" className="mono hover:text-on-surface transition-colors">&larr; Portfolio</a>
-              <a href="https://github.com/Bahniman/turnstile" target="_blank" rel="noreferrer" className="mono hover:text-on-surface transition-colors">Source</a>
-              <ThemeToggle />
-            </nav>
-          </div>
-        </div>
-      </header>
+      <SuiteHeader name="Turnstile" sections={[
+        { label: "The gap", href: "#problem" },
+        { label: "Sample gate", href: "#demo" },
+        { label: "Limits", href: "#limits" },
+        { label: "Sources", href: "#sources" },
+      ]} />
 
-      <main className="pt-16">
+      <main id="main" className="suite-main">
 
         {/* ------------------------------ opening ----------------------------- */}
         <section className="shell section hero-grid">
           <div>
-            <h1 className="display">Commerce analytics<br />for the agent era.</h1>
-            <p className="lede" style={{ marginTop: "2rem" }}>
-              AI assistants now browse and buy on behalf of their owners. To most storefronts they
-              look like bots and get blocked, which turns a real sale into a false decline and
-              leaves the funnel analytics reading nonsense. Turnstile tells the two apart, then
-              serves each one an interface it can actually use.
+            <h1 className="display">Commerce analytics<span className="hero-accent">for the agent era.</span></h1>
+            <p className="lede">
+              Shopping assistants can browse for people. Stores may need ways to distinguish
+              delegated shopping from other automated visits.
             </p>
-            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "2.5rem" }}>
+            <p className="hero-note">Concept demo · fixed sample sessions · no live traffic or checkout.</p>
+            <div className="hero-cta">
               <a href="#demo" className="inline-flex items-center gap-2 rounded bg-primary px-6 py-3 text-label-lg font-medium text-on-primary">
                 Try the gate
               </a>
@@ -47,19 +36,18 @@ export default function LandingPage() {
 
           <dl className="meta">
             <div><dt>Layer</dt><dd>Commerce</dd></div>
-            <div><dt>Status</dt><dd>Working prototype, MIT licensed</dd></div>
-            <div><dt>Context</dt><dd>Sits above ACP and AP2, not against them</dd></div>
-            <div><dt>Part of</dt><dd>Four protocols for the agent economy</dd></div>
+            <div><dt>Status</dt><dd>Client-side concept prototype · MIT licensed</dd></div>
+            <div><dt>Context</dt><dd>Explores recognition and readable offers alongside payment protocols</dd></div>
+            <div><dt>Part of</dt><dd>Four prototypes exploring the agent economy</dd></div>
           </dl>
         </section>
 
         {/* ----------------------------- statement ---------------------------- */}
         <section className="statement">
           <div className="shell">
-            <p className="line">The payment rails for agent commerce shipped. The first flagship storefront using them was switched off with almost no sales.</p>
+            <p className="line">Payment rails exist. Recognising delegated traffic is a separate task.</p>
             <p className="by">
-              That result is the interesting one. It says the hard part was never taking the
-              money.
+              A product hypothesis: storefronts may need clearer ways to distinguish delegated shopping from other automated traffic.
             </p>
           </div>
         </section>
@@ -68,15 +56,15 @@ export default function LandingPage() {
         <section className="shell section band" id="problem">
           <div className="section-head">
             <span className="idx">The gap</span>
-            <h2 className="h2">Everyone solved payment. Nobody solved recognition.</h2>
-            <p className="note">Two facts from the same eighteen months.</p>
+            <h2 className="h2">Payment protocols leave other storefront questions open.</h2>
+            <p className="note">Protocol milestones, then the separate task of presenting offers to agents.</p>
           </div>
 
           <div className="rows">
             <article className="row">
               <span className="num">01</span>
               <div>
-                <h3 className="title">The rails were built fast, by everyone</h3>
+                <h3 className="title">Payment protocols are developing quickly</h3>
                 <p className="role">ACP, AP2, and a standards body</p>
               </div>
               <div>
@@ -86,8 +74,9 @@ export default function LandingPage() {
                   September 2025 with more than sixty launch partners including Mastercard,
                   PayPal, American Express and Adyen, then donated it to the FIDO Alliance on 28
                   April 2026. PayPal joined ACP that October, and Stripe shipped an Agentic
-                  Commerce Suite in December 2025. Within about a year, letting an agent pay
-                  stopped being the hard part.
+                  Commerce Suite in December 2025. These announcements show continuing work on
+                  payment protocols; recognition and readable product information are separate
+                  questions for this concept to explore.
                 </p>
               </div>
             </article>
@@ -95,51 +84,21 @@ export default function LandingPage() {
             <article className="row">
               <span className="num">02</span>
               <div>
-                <h3 className="title">The demand did not arrive</h3>
-                <p className="role">Instant Checkout, switched off</p>
+                <h3 className="title">Product flows keep evolving</h3>
+                <p className="role">Public announcements don't explain causes</p>
               </div>
               <div>
                 <p className="desc">
-                  ACP&rsquo;s first live deployment was Instant Checkout inside ChatGPT, with Etsy
-                  as the launch merchant and more than a million Shopify merchants announced as
-                  following. OpenAI shut it down after roughly five months with near-zero sales.
-                  The rails worked. What was missing was everything either side of the
-                  transaction: the merchant could not reliably tell an agent from a scraper, and
-                  the agent could not reliably read a storefront built for human eyes.
+                  OpenAI and Stripe introduced ACP, with an initial ChatGPT shopping flow and Etsy
+                  as a launch merchant. OpenAI later described shopping research as a way to help
+                  people compare products. These public materials do not establish why individual
+                  product flows changed or how much they sold. Recognition and machine-readable
+                  offers remain hypotheses for this concept to explore.
                 </p>
               </div>
             </article>
           </div>
 
-          <div className="table-wrap" style={{ marginTop: "3rem" }}>
-            <table className="table">
-              <thead>
-                <tr><th>The gap between forecast and result</th><th>Source</th><th className="n">Figure</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Global commerce agentic buying could influence by 2030<span className="sub">The forecast everyone is building against</span></td>
-                  <td>McKinsey</td>
-                  <td className="n">$3&ndash;5T</td>
-                </tr>
-                <tr>
-                  <td>Orchestrated US B2C retail revenue in the same forecast</td>
-                  <td>McKinsey</td>
-                  <td className="n">~$1T</td>
-                </tr>
-                <tr>
-                  <td>Launch partners behind AP2 at announcement</td>
-                  <td>Google</td>
-                  <td className="n">60+</td>
-                </tr>
-                <tr>
-                  <td>Months Instant Checkout ran before being switched off<span className="sub">Reported as near-zero sales</span></td>
-                  <td>OpenAI</td>
-                  <td className="n">~5</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </section>
 
         {/* ----------------------------- mechanism ---------------------------- */}
@@ -147,7 +106,7 @@ export default function LandingPage() {
           <div className="section-head">
             <span className="idx">3 parts</span>
             <h2 className="h2">What sits above the rails</h2>
-            <p className="note">Turnstile assumes ACP and AP2 win. It solves the two ends they do not touch.</p>
+            <p className="note">A product hypothesis: explore storefront work alongside payment protocols.</p>
           </div>
 
           <div className="rows">
@@ -156,22 +115,21 @@ export default function LandingPage() {
               <div><h3 className="title">Tell them apart</h3><p className="role">Session classification</p></div>
               <div>
                 <p className="desc">
-                  A delegated shopping agent and a scraper look almost identical to a rules engine
-                  written in 2019. Turnstile classifies the session on behaviour rather than a
-                  blocklist, so a legitimate agent is recognised as a customer instead of being
-                  treated as an attack.
+                  Storefront rules may have limited signals for distinguishing delegated shopping
+                  from scraping. A production concept could explore behavioral and declared
+                  identity signals while accounting for uncertainty and the risk of mistaken
+                  classifications.
                 </p>
               </div>
             </article>
             <article className="row">
               <span className="num">02</span>
-              <div><h3 className="title">Recover the false declines</h3><p className="role">The revenue already being lost</p></div>
+              <div><h3 className="title">Explore possible false declines</h3><p className="role">A merchant-side hypothesis</p></div>
               <div>
                 <p className="desc">
-                  A false decline is worse than a lost sale, because the customer was willing and
-                  the system said no. This is not a hypothetical class of error: it is the
-                  ordinary failure mode of every bot defence, and it now fires on paying
-                  customers whose assistant did the clicking.
+                  A false decline can prevent a willing customer from completing a purchase.
+                  Whether delegated assistants encounter this in a particular store requires
+                  measurement; the prototype does not establish its frequency or revenue impact.
                 </p>
               </div>
             </article>
@@ -181,9 +139,9 @@ export default function LandingPage() {
               <div>
                 <p className="desc">
                   Once a session is known to be an agent, sending it a page built for human eyes
-                  is wasteful for both sides. Turnstile serves structured product data instead, so
-                  the agent stops guessing at the DOM and the merchant stops paying to render a
-                  page nobody looks at.
+                  may be hard for software to parse. A production version could offer structured
+                  product data alongside the human storefront, rather than requiring an agent to
+                  infer product details from page markup.
                 </p>
               </div>
             </article>
@@ -195,13 +153,13 @@ export default function LandingPage() {
           <div className="section-head">
             <span className="idx">Sandbox</span>
             <h2 className="h2">Watch the gate sort a session</h2>
-            <p className="note">Twelve visitors, mixed human and agent. Sample data.</p>
+            <p className="note">Six fixed sample sessions. Adjust the sample rules and inspect the illustrative outcomes.</p>
           </div>
           <TrafficGateVisualizer />
         </section>
 
         {/* ---------------------------- the objection -------------------------- */}
-        <section className="shell section band">
+        <section className="shell section band" id="limits">
           <div className="section-head">
             <span className="idx">Honest</span>
             <h2 className="h2">Where this is weakest</h2>
@@ -209,23 +167,20 @@ export default function LandingPage() {
           </div>
           <div className="prose" style={{ display: "grid", gap: "1.25rem" }}>
             <p>
-              <strong>The market may simply not be here yet.</strong> Instant Checkout is the
-              evidence against this thesis. It is possible people do not want an assistant buying for them, in which case
-              classification solves a problem nobody has. My read is that it failed on interface
-              and trust rather than on desire.
+              <strong>Demand and trust need evidence.</strong> Public product changes alone do not
+              establish why a shopping feature changed or whether shoppers want delegated checkout.
+              The concept needs user and merchant research before its market hypothesis can be tested.
             </p>
             <p>
-              <strong>Behavioural classification invites an arms race.</strong> Anything that
-              distinguishes a good agent from a bad one becomes a target for imitation. The
-              durable version of this leans on signed agent identity, which is exactly what the
-              emerging bot-authentication work is trying to standardise, rather than on
-              heuristics I maintain alone.
+              <strong>Behavioral signals can be imitated.</strong> A design could combine them
+              with declared or signed identity where available, and should treat each signal as
+              uncertain rather than as proof of intent.
             </p>
             <p>
-              <strong>Cloudflare and Akamai are one product decision away.</strong> They already
-              sit in front of the traffic and already do the classification. The honest wedge is
-              the commerce-specific half, recovering declined checkouts and serving structured
-              catalogue data, not competing on raw bot detection.
+              <strong>Existing traffic tools shape the product boundary.</strong> Providers such
+              as Cloudflare and Akamai already offer bot-management capabilities. A commerce
+              concept would need to demonstrate a distinct use case, such as serving structured
+              catalog data, rather than assume general bot detection is missing.
             </p>
           </div>
         </section>
@@ -241,7 +196,7 @@ export default function LandingPage() {
         </section>
 
         {/* ------------------------------ sources ----------------------------- */}
-        <section className="shell section band">
+        <section className="shell section band" id="sources">
           <div className="section-head">
             <span className="idx">Checkable</span>
             <h2 className="h2">Sources</h2>
@@ -258,12 +213,7 @@ export default function LandingPage() {
               <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol" target="_blank" rel="noreferrer">Google Cloud</a>
             </li>
             <li>
-              McKinsey on agentic commerce influencing $3&ndash;5 trillion of global commerce by
-              2030.{" "}
-              <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights" target="_blank" rel="noreferrer">McKinsey &amp; Company</a>
-            </li>
-            <li>
-              Instant Checkout launched with Etsy and withdrawn after roughly five months.{" "}
+              OpenAI's announcement of shopping in ChatGPT and Instant Checkout.{" "}
               <a href="https://openai.com/index/buy-it-in-chatgpt/" target="_blank" rel="noreferrer">OpenAI</a>
             </li>
           </ol>
@@ -274,7 +224,7 @@ export default function LandingPage() {
           <div>
             <h2 className="h2" style={{ fontSize: "1.5rem" }}>Built by Bahniman Talukdar</h2>
             <p className="prose" style={{ marginTop: "0.75rem", fontSize: "0.9375rem" }}>
-              One of four protocols for the agent economy.
+              One of four prototypes exploring changes in the agent economy.
             </p>
             <p style={{ display: "flex", gap: "1.5rem", marginTop: "1.5rem", flexWrap: "wrap" }}>
               <a className="lnk" href="https://bahniman.github.io">Portfolio</a>

@@ -3,21 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Turnstile — commerce analytics for the agent era</title>
+    <title>Turnstile — a prototype for agent-aware storefronts</title>
     <meta
       name="description"
-      content="Turnstile is the storefront classifier and checkout standard for autonomous AI shoppers. Detect agents, attribute revenue, recover false declines."
+      content="Turnstile is a concept prototype for distinguishing delegated shopping assistants from other storefront traffic and presenting machine-readable offers. Explore an illustrative sample-data demo."
     />
     <meta property="og:title" content="Turnstile" />
     <meta
       property="og:description"
-      content="Commerce analytics for the agent era. Turnstile classifies storefront traffic and serves machine-readable endpoints."
+      content="A concept prototype for agent-aware storefronts, with an illustrative traffic sandbox."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        var theme = null;
+        try { theme = localStorage.getItem("theme"); } catch (e) {}
+        if (theme !== "light" && theme !== "dark") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        var root = document.documentElement;
+        root.setAttribute("data-theme", theme);
+        root.classList.toggle("dark", theme === "dark");
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

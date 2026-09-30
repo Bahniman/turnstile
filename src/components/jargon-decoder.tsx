@@ -7,20 +7,22 @@ interface Term {
 }
 
 const TERMS: Term[] = [
-  { word: "Agent Traffic", definition: "Store visits made by autonomous AI software acting on behalf of a human user — browsing, comparing, and executing purchases." },
-  { word: "Classifier Signals", definition: "The behavioral clues analyzed to distinguish humans from agents: keystroke dynamics, mouse track paths, load sequences, and rendering checks." },
-  { word: "False Decline", definition: "Legitimate transactions cancelled by legacy fraud tools because a delegated agent checkout 'looks too bot-like' (instant inputs, no scroll)." },
-  { word: "Agent Attribution", definition: "Correctly identifying and crediting checkout revenue to the specific agent platform (e.g. 'attributed to OpenClaw agent sale')." },
-  { word: "Offer Feed / AEO", definition: "Agent Engine Optimization. Providing structured product data (sku, price, inventory) at a static endpoint instead of a heavy HTML interface." },
+  { word: "Delegated shopping", definition: "A person asks software to research or take steps toward a purchase on their behalf. Capabilities vary by service." },
+  { word: "Classification signal", definition: "A measured or declared feature a system might use to assess a session. Any one signal can be incomplete or misleading." },
+  { word: "False decline", definition: "A legitimate purchase attempt that a control mistakenly rejects. This prototype does not measure how often it occurs." },
+  { word: "Agent attribution", definition: "An idea for recording which assistant referred or initiated a shopping session; attribution is not implemented in this demo." },
+  { word: "Structured offer", definition: "Product details such as price and availability in a format software can read. This sandbox shows a mockup, not a live feed." },
 ];
 
 export function JargonDecoder() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4">
+    <div className="decoder">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls="turnstile-jargon-table"
         className="flex w-full items-center justify-between font-sans text-sm font-bold text-foreground focus:outline-none"
       >
         <span className="flex items-center gap-2">
@@ -31,7 +33,7 @@ export function JargonDecoder() {
       </button>
 
       {isOpen && (
-        <div className="mt-4 overflow-x-auto">
+        <div id="turnstile-jargon-table" className="mt-4 overflow-x-auto">
           <table className="w-full border-collapse text-left text-xs md:text-sm">
             <thead>
               <tr className="border-b border-border/80 bg-foreground/[0.02]">
