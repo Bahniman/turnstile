@@ -110,7 +110,7 @@ export function TrafficGateVisualizer() {
               type="button"
               onClick={() => setIsPlaying(value => !value)}
               aria-pressed={isPlaying}
-              className={`flex h-8 items-center gap-1.5 rounded-lg px-3 text-xs font-bold transition-all ${
+              className={`traffic-play-button flex h-8 items-center gap-1.5 rounded-lg px-3 text-xs font-bold transition-all ${
                 isPlaying 
                   ? "border border-error bg-error-container text-on-error-container"
                   : "border border-outline bg-primary text-on-primary hover:bg-primary/90 active:bg-primary/80"
@@ -176,7 +176,7 @@ export function TrafficGateVisualizer() {
                 aria-describedby="entropyHelp"
                 className="w-full accent-primary h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer"
               />
-              <span id="entropyHelp" className="text-[9px] text-on-surface-variant/60 block">Below this sample value, the rule routes non-scraper visits to the JSON mockup.</span>
+              <span id="entropyHelp" className="text-[9px] text-on-surface-variant block">Below this sample value, the rule routes non-scraper visits to the JSON mockup.</span>
             </div>
 
             {/* Slider 2 */}
@@ -195,7 +195,7 @@ export function TrafficGateVisualizer() {
                 aria-describedby="rateHelp"
                 className="w-full accent-error h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer"
               />
-              <span id="rateHelp" className="text-[9px] text-on-surface-variant/60 block">Any sample above this rate is marked blocked by this rule; no request is actually blocked.</span>
+              <span id="rateHelp" className="text-[9px] text-on-surface-variant block">Any sample above this rate is marked blocked by this rule; no request is actually blocked.</span>
             </div>
           </div>
         </div>
@@ -222,12 +222,12 @@ export function TrafficGateVisualizer() {
                   }`}
                 >
                   <span className="traffic-row-main flex items-center gap-3 min-w-0">
-                    <span className="text-on-surface-variant/60">{s.time}</span>
+                    <span className="text-on-surface-variant">{s.time}</span>
                     <span className="text-foreground font-bold">{s.id}</span>
                     <span className="truncate max-w-[120px] sm:max-w-[180px]">{s.userAgent}</span>
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="hidden sm:inline text-[9px] text-on-surface-variant/70">
+                    <span className="hidden sm:inline text-[9px] text-on-surface-variant">
                       Ent: {s.mouseEntropy}% | {s.requestRate} r/s
                     </span>
                     {s.status === "served_html" ? (

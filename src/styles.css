@@ -60,7 +60,7 @@ a { color: inherit; text-underline-offset: 3px; }
 .table .n { text-align:right; font-family:var(--mono); white-space:nowrap; }
 .sub { display:block; margin-top:4px; font-size:12px; color:var(--sec); }
 .src { display:grid; gap:12px; padding-left:24px; text-transform:none; letter-spacing:0; font-size:13px; }
-.src a { color:var(--blue); font-weight:700; }
+.src a { color:var(--blue-text); font-weight:700; }
 .lnk { font:12px var(--mono); }
 
 /* Calculator components: paper panels, firm outlines and legible data labels. */
@@ -80,8 +80,9 @@ a { color: inherit; text-underline-offset: 3px; }
 .field-error,.status-copy { min-height:1.45em; margin:6px 0 0; color:var(--tan); font:12px/1.45 var(--mono); }
 .choice-group { display:grid; gap:8px; padding:0; border:0; margin:0; }
 .strategy-option { display:flex; align-items:center; justify-content:space-between; gap:8px; width:100%; min-height:46px; padding:9px 11px; border:1.5px solid var(--line-2); border-radius:2px; background:transparent; color:var(--ink); font:11px var(--mono); text-align:left; cursor:pointer; }
-.strategy-option[aria-pressed="true"] { border:2px solid var(--ink); background:var(--pink); box-shadow:3px 3px 0 var(--shc); }
+.strategy-option[aria-pressed="true"] { border:2px solid var(--ink); background:var(--pink); color:#1d1a16; box-shadow:3px 3px 0 var(--shc); }
 .strategy-option small { color:var(--sec); text-align:right; }
+.strategy-option[aria-pressed="true"] small { color:#1d1a16; }
 .output-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 .metric-list,.segment-list { display:grid; gap:12px; }
 .metric-row,.segment-row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; font:12px var(--mono); }
@@ -112,6 +113,11 @@ a { color: inherit; text-underline-offset: 3px; }
 .traffic-demo .traffic-preview { min-height:480px; }
 .traffic-demo .traffic-preview [class*="bg-surface-container"] { background:var(--paper); }
 .traffic-demo .traffic-row-main { gap:8px; }
+.traffic-demo .bg-primary { background:var(--blue-fill); }
+.traffic-demo .traffic-log button[aria-pressed="true"] { background:var(--blue-fill); color:var(--on-blue); }
+.traffic-demo .traffic-log button[aria-pressed="true"] :is(.text-on-surface-variant,.text-foreground) { color:var(--on-blue)!important; }
+.traffic-demo .traffic-play-button[aria-pressed="false"] { background:var(--blue-fill); color:var(--on-blue); }
+.traffic-demo .traffic-play-button[aria-pressed="false"]:hover { background:var(--blue-fill); }
 .traffic-demo .sample-checkout { border:2px solid var(--ink); background:var(--yellow); color:#1d1a16; }
 .traffic-demo pre { white-space:pre-wrap; overflow-wrap:anywhere; color:var(--body); font:11px/1.55 var(--mono); }
 .traffic-demo input[type="range"] { accent-color:var(--blue); }
@@ -127,12 +133,13 @@ a { color: inherit; text-underline-offset: 3px; }
 /* Hero routing board: fixed sample sessions shown as actual rule outcomes. */
 .turnstile-page .hero-grid { grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr); align-items:center; gap:clamp(24px,5vw,72px); }
 .headline-ink { position:relative; display:inline-block; padding-inline:.08em; background:var(--blue-fill); color:var(--on-blue); text-shadow:3px 3px 0 var(--pink); box-shadow:5px 5px 0 var(--pink); transform:rotate(-1.2deg); }
-.turnstile-page .hero-accent { color:var(--pink); }
+.turnstile-page .hero-accent { color:var(--pink-display); }
 .route-board { min-width:0; margin:0; overflow:hidden; border:var(--bw) solid var(--ink); border-radius:6px; background:var(--card); color:var(--ink); box-shadow:6px 6px 0 var(--shc); }
 .route-board-head { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:15px clamp(14px,2vw,22px); border-bottom:var(--bw) solid var(--ink); background:var(--blue-fill); color:var(--on-blue); }
 .route-board-label { margin:0 0 5px; color:var(--on-blue); font:12px/1.4 var(--mono); text-transform:uppercase; letter-spacing:.035em; }
 .route-board-head h2 { margin:0; font-size:clamp(1.3rem,2vw,1.65rem); line-height:1.08; letter-spacing:-.035em; }
 .route-board-head h2 em { color:var(--yellow); font:italic 400 1em/1.05 var(--serif); letter-spacing:-.02em; }
+@media(max-width:600px) { .route-board-head h2 em { color:var(--on-blue); } }
 .route-board-stamp { flex:none; padding:6px 8px; border:2px solid var(--ink); background:var(--yellow); color:#1d1a16; box-shadow:3px 3px 0 var(--pink); font:9px/1.3 var(--mono); text-transform:uppercase; transform:rotate(2deg); }
 .route-ruleline { display:flex; justify-content:space-between; gap:12px; margin-inline:clamp(14px,2vw,22px); padding:11px 0; border-bottom:1px solid var(--line-2); color:var(--sec); font:11px/1.45 var(--mono); }
 .route-lanes { display:grid; margin:0 clamp(14px,2vw,22px); padding:0; list-style:none; }
