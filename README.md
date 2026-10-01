@@ -20,6 +20,8 @@ Turnstile uses the shared Riso Poster visual system and responsive project heade
 
 The page includes a skip link, semantic sections, labeled controls, keyboard-operable options with pressed states, and reduced-motion styling. These are implemented features, not a formal accessibility certification.
 
+Sample-session selections retain their place in the document. Selected rows use cream text on a fixed blue surface; essential timestamps, signal notes, source links, and the storefront preview retain readable colours in both themes. The jargon disclosure supports keyboard opening and closing.
+
 ## Run the website locally
 
 Requires Node.js 22.12+ and npm.
