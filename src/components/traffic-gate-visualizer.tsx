@@ -228,7 +228,7 @@ export function TrafficGateVisualizer() {
                   </span>
                   <div className="flex items-center gap-2">
                     <span className="hidden sm:inline text-[9px] text-on-surface-variant">
-                      Ent: {s.mouseEntropy}% | {s.requestRate} r/s
+                      mouse {s.mouseEntropy}% · {s.requestRate} req/s
                     </span>
                     {s.status === "served_html" ? (
                       <span className="route-tag route-html border border-transparent text-on-primary-container bg-primary-container px-1.5 py-0.5 rounded text-[9px] font-bold">HTML</span>

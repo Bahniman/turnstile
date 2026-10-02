@@ -115,8 +115,8 @@ a { color: inherit; text-underline-offset: 3px; }
 .traffic-demo .traffic-preview [class*="bg-surface-container"] { background:var(--paper); }
 .traffic-demo .traffic-row-main { gap:8px; }
 .traffic-demo .bg-primary { background:var(--blue-fill); }
-.traffic-demo .traffic-log button[aria-pressed="true"] { background:var(--blue-fill); color:var(--on-blue); }
-.traffic-demo .traffic-log button[aria-pressed="true"] :is(.text-on-surface-variant,.text-foreground) { color:var(--on-blue)!important; }
+.traffic-demo .traffic-log button[aria-pressed="true"] { background:var(--yellow); color:#1d1a16; }
+.traffic-demo .traffic-log button[aria-pressed="true"] :is(.text-on-surface-variant,.text-foreground) { color:#1d1a16!important; }
 .traffic-demo .traffic-play-button[aria-pressed="false"] { background:var(--blue-fill); color:var(--on-blue); }
 .traffic-demo .traffic-play-button[aria-pressed="false"]:hover { background:var(--blue-fill); }
 .traffic-demo .sample-checkout { border:2px solid var(--ink); background:var(--yellow); color:#1d1a16; }
@@ -129,7 +129,7 @@ a { color: inherit; text-underline-offset: 3px; }
 .traffic-demo .animate-pulse { animation:none; }
 @media(max-width:760px) { .hero-grid,.simulation-grid { grid-template-columns:1fr; } .meta { max-width:600px; } .row { grid-template-columns:38px 1fr; } .row>div:last-child { grid-column:2; } .section-head { grid-template-columns:70px 1fr; } }
 @media(max-width:520px) { .output-grid { grid-template-columns:1fr; } .statement .by { margin-left:0; } .table { min-width:620px; } .simulation-top { align-items:start; flex-direction:column; } }
-@media(max-width:900px) { .traffic-demo { grid-template-columns:1fr; } .traffic-demo .traffic-preview { min-height:360px; } }
+@media(max-width:900px) { .traffic-demo { grid-template-columns:minmax(0,1fr); } .traffic-demo .traffic-preview { min-height:360px; } }
 
 /* Hero routing board: fixed sample sessions shown as actual rule outcomes. */
 .turnstile-page .hero-grid { grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr); align-items:center; gap:clamp(24px,5vw,72px); }
@@ -176,3 +176,14 @@ a { color: inherit; text-underline-offset: 3px; }
   .route-copy strong { font-size:11px; }
   .route-copy small,.route-output small { font-size:10px; }
 }
+
+/* Signature: how-it-works cards as tickets; the stub carries the punched notches. */
+.pk-cards--tickets li { display:flex; flex-direction:column; padding-bottom:0; }
+.pk-cards--tickets .eg { position:relative; margin:auto -26px 0; padding:14px 26px 16px; border-top:2.5px dashed var(--ink); font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink); }
+.pk-cards--tickets p + .eg { margin-top:auto; }
+.pk-cards--tickets h3 + p { margin-bottom:22px; }
+.pk-cards--tickets .eg::before,.pk-cards--tickets .eg::after { content:""; position:absolute; top:-14px; width:24px; height:24px; border:var(--bw) solid var(--ink); border-radius:50%; background:var(--paper); }
+.pk-cards--tickets .eg::before { left:-14px; clip-path:inset(0 0 0 50%); }
+.pk-cards--tickets .eg::after { right:-14px; clip-path:inset(0 50% 0 0); }
+.pk-cards--tickets li:nth-child(3) .eg { border-color:#1d1a16; color:#1d1a16; }
+@media(max-width:600px){ .traffic-demo>div:first-child>div:first-child{ flex-wrap:wrap; } .traffic-demo>div:first-child>div:first-child>*{ min-width:0; } }

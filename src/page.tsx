@@ -9,9 +9,9 @@ export default function LandingPage() {
     <div className="turnstile-page pk relative min-h-screen bg-surface text-on-surface font-sans">
 
       <SuiteHeader name="Turnstile" sections={[
+        { label: "Try the gate", href: "#demo" },
         { label: "The gap", href: "#problem" },
         { label: "How it works", href: "#how" },
-        { label: "Try the gate", href: "#demo" },
         { label: "Weak spots", href: "#limits" },
         { label: "Sources", href: "#sources" },
       ]} />
@@ -69,6 +69,19 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* -------------------------------- the demo -------------------------------- */}
+        <section className="pk-wrap pk-sec" id="demo">
+          <div className="pk-head">
+            <p className="pk-kick"><span className="dot" /> Try it</p>
+            <h2>Run the <em>gate.</em></h2>
+            <p className="pk-lede">Six sessions walk up to the store. Play the stream, move the two rules, and click any session to see exactly what it was served.</p>
+          </div>
+          <div className="pk-stage">
+            <span className="pk-stage-tag">Live in your browser</span>
+            <TrafficGateVisualizer />
+          </div>
+        </section>
+
         {/* ------------------------------- the gap -------------------------------- */}
         <section className="pk-wrap pk-sec" id="problem">
           <div className="pk-head">
@@ -107,7 +120,7 @@ export default function LandingPage() {
             <p className="pk-kick"><span className="dot" /> How it works</p>
             <h2>Three jobs at <em>the door.</em></h2>
           </div>
-          <ol className="pk-cards">
+          <ol className="pk-cards pk-cards--tickets">
             <li>
               <p className="pk-kick"><span className="n">1</span> Sort</p>
               <h3>Tell them apart</h3>
@@ -127,19 +140,6 @@ export default function LandingPage() {
               <span className="eg">Agent: served a JSON product feed</span>
             </li>
           </ol>
-        </section>
-
-        {/* -------------------------------- the demo -------------------------------- */}
-        <section className="pk-wrap pk-sec" id="demo">
-          <div className="pk-head">
-            <p className="pk-kick"><span className="dot" /> Try it</p>
-            <h2>Run the <em>gate.</em></h2>
-            <p className="pk-lede">Six sessions walk up to the store. Play the stream, move the two rules, and click any session to see exactly what it was served.</p>
-          </div>
-          <div className="pk-stage">
-            <span className="pk-stage-tag">Live in your browser</span>
-            <TrafficGateVisualizer />
-          </div>
         </section>
 
         {/* ------------------------------- weak spots ------------------------------- */}
