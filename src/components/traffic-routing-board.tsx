@@ -3,11 +3,11 @@ import { Bot, Search, UserRound } from "lucide-react";
 
 const routes = [
   {
-    kind: "Person sample",
+    kind: "Person",
     Icon: UserRound,
     signal: "87 activity · 0.8 req/s",
     outcome: "HTML",
-    detail: "storefront mockup",
+    detail: "the normal storefront",
     tone: "person",
   },
   {
@@ -15,15 +15,15 @@ const routes = [
     Icon: Bot,
     signal: "0 activity · 2.1 req/s",
     outcome: "JSON",
-    detail: "offer preview mockup",
+    detail: "a clean product feed",
     tone: "agent",
   },
   {
-    kind: "Scraper sample",
+    kind: "Scraper",
     Icon: Search,
     signal: "4 activity · 38 req/s",
     outcome: "Blocked",
-    detail: "rate rule crossed",
+    detail: "too fast to be human",
     tone: "blocked",
   },
 ] as const;
@@ -32,13 +32,13 @@ export function TrafficRoutingBoard() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <figure className="route-board" aria-labelledby="route-board-title">
+    <figure className="route-board pk-board-inner" aria-labelledby="route-board-title">
       <div className="route-board-head">
         <div>
-          <p className="route-board-label">Sample traffic · default rules</p>
-          <h2 id="route-board-title">Three visits. Three <em>outcomes.</em></h2>
+          <p className="route-board-label">At the door · default rules</p>
+          <h2 id="route-board-title">Three visitors. Three <em>answers.</em></h2>
         </div>
-        <span className="route-board-stamp">Sample only</span>
+        
       </div>
 
       <div className="route-ruleline">
@@ -74,7 +74,7 @@ export function TrafficRoutingBoard() {
       </ol>
 
       <figcaption className="route-board-foot">
-        Six fixed fixtures · local rules · no live requests or policy action.
+        Move the two rules in the demo below and watch these change.
       </figcaption>
     </figure>
   );

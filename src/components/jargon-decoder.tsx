@@ -7,11 +7,11 @@ interface Term {
 }
 
 const TERMS: Term[] = [
-  { word: "Delegated shopping", definition: "A person asks software to research or take steps toward a purchase on their behalf. Capabilities vary by service." },
-  { word: "Classification signal", definition: "A measured or declared feature a system might use to assess a session. Any one signal can be incomplete or misleading." },
-  { word: "False decline", definition: "A legitimate purchase attempt that a control mistakenly rejects. This prototype does not measure how often it occurs." },
-  { word: "Agent attribution", definition: "An idea for recording which assistant referred or initiated a shopping session; attribution is not implemented in this demo." },
-  { word: "Structured offer", definition: "Product details such as price and availability in a format software can read. This sandbox shows a mockup, not a live feed." },
+  { word: "Delegated shopping", definition: "A person asks an AI assistant to find, compare or buy something for them." },
+  { word: "Classification signal", definition: "Something the store can measure about a visit, like mouse movement or request speed. One signal alone can be faked, so Turnstile weighs several." },
+  { word: "False decline", definition: "A real buyer the store turns away because its bot filter thought they were a bot." },
+  { word: "Agent attribution", definition: "Recording which assistant brought a sale, the way stores already track which ad brought one. On the roadmap." },
+  { word: "Structured offer", definition: "Price, stock and specs as clean data an agent can read, instead of a page built for eyes." },
 ];
 
 export function JargonDecoder() {
@@ -27,7 +27,7 @@ export function JargonDecoder() {
       >
         <span className="flex items-center gap-2">
           <BookOpen className="h-4 w-4 text-accent" />
-          Jargon Decoder
+          The words, in plain English
         </span>
         {isOpen ? <ChevronUp className="h-4 w-4 text-muted-foreground" /> : <ChevronDown className="h-4 w-4 text-muted-foreground" />}
       </button>

@@ -1,7 +1,11 @@
-# Turnstile
+# Product
 
-Turnstile is a concept prototype exploring how a storefront might distinguish a delegated shopping assistant from other automated traffic and present a machine-readable offer. Its public page is a product argument plus an illustrative sandbox. The sandbox uses fixed sample sessions and a client-side rules demo; it does not collect storefront traffic, connect to a merchant, run the Python classifier, process payments, or enforce a real block.
+Turnstile sorts a store's visitors into people, AI shopping agents and scrapers, then serves each one what it should get: the normal page, a clean product feed, or a closed door.
 
-The intended reader is a commerce or product decision-maker assessing the problem and the prototype. Preserve the difference between the longer-term product idea and the implemented demo. Keep sample data, policy outcomes, and simulated order values explicitly identified as illustrative.
+The gate runs in the browser on six sample sessions. The Python classifier, analytics and offer-feed modules are in `turnstile/`.
 
-Core page actions: navigate between argument, sandbox, limits, and sources; switch theme; play or pause the sample stream; reset it; adjust two sample policy thresholds; select a sample session to inspect its HTML, JSON, or blocked-state mockup; expand the jargon decoder; follow source and repository links.
+## Register for the public page
+
+Write it the way the portfolio is written: plain, first person where it fits, confident. State what the prototype does and what the argument is. Say once, near the demo, that it runs in the browser on sample data; do not repeat a disclaimer in every sentence, card or label ("illustrative", "hypothesis", "not validated", "sample only"). Honest limits belong in the "Where this is weakest" section, phrased as a real objection with an answer.
+
+Keep every factual claim tied to a numbered source. Never overstate: no customers, pilots or results that do not exist. Every figure in the copy must match what the demo computes at its defaults.

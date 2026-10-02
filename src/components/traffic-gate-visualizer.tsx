@@ -14,7 +14,7 @@ const INITIAL_SESSIONS: VisitorSession[] = [
 const NEW_VISITOR_POOL: Omit<VisitorSession, "id" | "time">[] = [
   { userAgent: "Mozilla/5.0 Edge/120.0", mouseEntropy: 82, requestRate: 1.2, kind: "human", buyValue: 5350, status: "served_html", note: "Returning checkout customer, applied discount code" },
   { userAgent: "AhrefsBot/7.0 Scraper", mouseEntropy: 0, requestRate: 45.0, kind: "scraper", buyValue: 0, status: "blocked", note: "High-frequency page scanning" },
-  { userAgent: "ClaudeBot/1.0 AI Agent", mouseEntropy: 0, requestRate: 1.8, kind: "agent", buyValue: 2199, status: "served_json", note: "Shopping assistant fetching product availability matrix" },
+  { userAgent: "AssistantShopper/1.0 Agent", mouseEntropy: 0, requestRate: 1.8, kind: "agent", buyValue: 2199, status: "served_json", note: "Shopping assistant fetching product availability matrix" },
   { userAgent: "Mozilla/5.0 Firefox/122.0", mouseEntropy: 91, requestRate: 0.5, kind: "human", buyValue: 0, status: "served_html", note: "Reading shipping details, no cart additions" },
 ];
 
@@ -29,7 +29,7 @@ export function TrafficGateVisualizer() {
   const isJson = selectedSession?.status === "served_json";
   const isBlocked = selectedSession?.status === "blocked";
   const kindLabel = selectedSession ? {
-    human: "Person sample", agent: "Shopping-agent sample", crawler: "Crawler sample", scraper: "Scraper sample",
+    human: "Person", agent: "Shopping agent", crawler: "Search crawler", scraper: "Scraper",
   }[selectedSession.kind] : "";
   const nextId = useRef(9000);
 
@@ -89,7 +89,7 @@ export function TrafficGateVisualizer() {
         in_stock: true,
         sizes_available: [8, 9, 10, 11]
       },
-      checkout: "Not simulated in this prototype"
+      checkout: "Handed to the store's own checkout"
     }, null, 2);
   };
 
@@ -99,10 +99,10 @@ export function TrafficGateVisualizer() {
       <div className="lg:col-span-7 flex flex-col gap-5">
         <div className="flex items-center justify-between border-b border-border pb-3.5">
           <div>
-            <h3 className="font-sans text-lg font-bold text-foreground">Sample traffic gate</h3>
-            <p className="text-xs text-muted-foreground">Fixed examples · local rules · no live requests</p>
+            <h3 className="font-sans text-lg font-bold text-foreground">The gate</h3>
+            <p className="text-xs text-muted-foreground">Six sample sessions, sorted by the two rules below</p>
             <p className="sr-only" role="status" aria-live="polite">
-              {selectedSession ? `Selected ${selectedSession.id}: ${kindLabel}, ${isBlocked ? "blocked by sample rule" : isJson ? "JSON mockup" : "HTML mockup"}.` : "No sample selected."}
+              {selectedSession ? `Selected ${selectedSession.id}: ${kindLabel}, ${isBlocked ? "blocked" : isJson ? "served the product feed" : "served the normal page"}.` : "No session selected."}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -117,14 +117,14 @@ export function TrafficGateVisualizer() {
               }`}
             >
               {isPlaying ? <Pause aria-hidden="true" className="h-3.5 w-3.5" /> : <Play aria-hidden="true" className="h-3.5 w-3.5" />}
-              {isPlaying ? "Pause sample" : "Play sample stream"}
+              {isPlaying ? "Pause sample" : "Play the stream"}
             </button>
             <button
               type="button"
               onClick={resetSimulator}
               className="border border-outline-variant bg-surface-container-low hover:bg-on-surface/8 text-on-surface-variant hover:text-on-surface h-8 w-8 rounded-lg flex items-center justify-center transition-colors"
-              title="Reset sample stream"
-              aria-label="Reset sample stream"
+              title="Reset the stream"
+              aria-label="Reset the stream"
             >
               <RotateCcw aria-hidden="true" className="h-3.5 w-3.5" />
             </button>
@@ -146,17 +146,17 @@ export function TrafficGateVisualizer() {
             <span className="text-lg font-bold text-error">{stats.otherAutomated}</span>
           </div>
           <div className="border border-outline-variant rounded-lg p-2 bg-surface-container-low">
-            <span className="text-[10px] text-on-surface-variant block font-bold uppercase tracking-wider">Sample order value</span>
+            <span className="text-[10px] text-on-surface-variant block font-bold uppercase tracking-wider">Order value kept</span>
             <span className="text-sm font-bold text-primary block truncate mt-1">₹{stats.sampleOrderValue.toLocaleString("en-IN")}</span>
           </div>
         </div>
-        <p className="traffic-window text-xs text-muted-foreground">Counts and sample order value use the {sessions.length} visible rows only; changing a threshold reclassifies those rows.</p>
+        <p className="traffic-window text-xs text-muted-foreground">Counts cover the {sessions.length} sessions in the log. Move a rule and they re-sort.</p>
 
         {/* Threshold Rules */}
         <div className="border border-outline-variant rounded-lg p-4 bg-surface-container-low space-y-4 font-mono text-xs">
           <div className="flex items-center justify-between border-b border-outline-variant/60 pb-2">
-            <span className="font-bold text-foreground">Sample rules</span>
-            <span className="text-[9px] text-on-surface-variant">Illustrative only</span>
+            <span className="font-bold text-foreground">Rules</span>
+            <span className="text-[9px] text-on-surface-variant">Drag to change</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -176,7 +176,7 @@ export function TrafficGateVisualizer() {
                 aria-describedby="entropyHelp"
                 className="w-full accent-primary h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer"
               />
-              <span id="entropyHelp" className="text-[9px] text-on-surface-variant block">Below this sample value, the rule routes non-scraper visits to the JSON mockup.</span>
+              <span id="entropyHelp" className="text-[9px] text-on-surface-variant block">Visits with less mouse activity than this, and a normal request rate, get the product feed.</span>
             </div>
 
             {/* Slider 2 */}
@@ -195,7 +195,7 @@ export function TrafficGateVisualizer() {
                 aria-describedby="rateHelp"
                 className="w-full accent-error h-1 bg-outline-variant rounded-lg appearance-none cursor-pointer"
               />
-              <span id="rateHelp" className="text-[9px] text-on-surface-variant block">Any sample above this rate is marked blocked by this rule; no request is actually blocked.</span>
+              <span id="rateHelp" className="text-[9px] text-on-surface-variant block">Anything faster than this is treated as a scraper and stopped.</span>
             </div>
           </div>
         </div>
@@ -203,7 +203,7 @@ export function TrafficGateVisualizer() {
         {/* Live Logs */}
         <div className="traffic-log border border-outline-variant rounded-lg p-3 bg-surface-container-high flex-1 min-h-[220px]">
           <div className="flex items-center justify-between border-b border-outline-variant/60 pb-1.5 mb-2">
-            <span className="font-mono text-[9px] uppercase font-bold text-on-surface-variant">Sample session log</span>
+            <span className="font-mono text-[9px] uppercase font-bold text-on-surface-variant">Session log</span>
             <span className="font-mono text-[9px] text-on-surface-variant">{sessions.length} shown</span>
           </div>
           <div className="space-y-2 max-h-[240px] overflow-y-auto pr-1">
@@ -246,11 +246,11 @@ export function TrafficGateVisualizer() {
       </div>
 
       {/* Right Panel: Content Negotiation Showcase */}
-      <aside className="traffic-preview lg:col-span-5 border border-outline-variant rounded-2xl p-4 bg-surface-container-low relative flex flex-col min-h-[460px] text-on-surface" aria-label="Selected sample outcome">
+      <aside className="traffic-preview lg:col-span-5 border border-outline-variant rounded-2xl p-4 bg-surface-container-low relative flex flex-col min-h-[460px] text-on-surface" aria-label="What the selected session was served">
         {selectedSession ? (
             <div className="h-full flex flex-col space-y-4">
               <div className="border-b border-outline-variant pb-3 flex items-center justify-between">
-                <span className="font-mono font-medium text-on-surface text-xs">{selectedSession.id} · sample outcome</span>
+                <span className="font-mono font-medium text-on-surface text-xs">{selectedSession.id} · what it was served</span>
                 <span className="font-mono text-[9px] uppercase border border-outline-variant px-2 py-0.5 rounded font-medium text-on-surface-variant">
                   {kindLabel}
                 </span>
@@ -258,7 +258,7 @@ export function TrafficGateVisualizer() {
 
               {/* Note */}
               <div className="rounded-lg bg-surface-container-highest border border-transparent p-2.5 font-mono text-[10px] text-on-surface-variant">
-                <span className="text-on-surface font-medium">Sample note:</span> {selectedSession.note}
+                <span className="text-on-surface font-medium">Note:</span> {selectedSession.note}
               </div>
 
               {/* Viewport content */}
@@ -266,14 +266,14 @@ export function TrafficGateVisualizer() {
                 {isBlocked ? (
                   <div className="text-center font-mono space-y-2 p-4 animate-pulse">
                     <EyeOff className="h-8 w-8 mx-auto text-error" />
-                    <p className="font-bold text-error">Blocked by sample rule</p>
-                    <p className="text-[10px] text-on-surface-variant">This local example crosses the selected request-rate threshold. No request is sent or blocked.</p>
+                    <p className="font-bold text-error">Blocked at the gate</p>
+                    <p className="text-[10px] text-on-surface-variant">This session crossed the request-rate limit, so it gets nothing.</p>
                   </div>
                 ) : isJson ? (
                   <div className="w-full h-full flex flex-col font-mono text-[10px] text-on-surface-variant">
                     <div className="flex items-center justify-between border-b border-outline-variant/60 pb-1.5 mb-2">
-                      <span>Illustrative offer payload · JSON</span>
-                      <span className="text-[9px] text-primary font-bold">NOT A LIVE ENDPOINT</span>
+                      <span>Product feed · JSON</span>
+                      <span className="text-[9px] text-primary font-bold">FOR AGENTS</span>
                     </div>
                     <pre className="flex-1 overflow-auto max-h-[230px] scrollbar-thin select-all">
                       {getProductJSON(selectedSession)}
@@ -282,7 +282,7 @@ export function TrafficGateVisualizer() {
                 ) : (
                   <div className="w-full h-full flex flex-col">
                     <div className="flex items-center justify-between border-b border-outline-variant pb-1.5 mb-3 font-mono text-[9px] text-on-surface-variant">
-                      <span>Illustrative storefront view</span>
+                      <span>Storefront · HTML</span>
                       <span className="text-[9px] text-primary font-medium">MOCKUP</span>
                     </div>
                     
@@ -301,7 +301,7 @@ export function TrafficGateVisualizer() {
                         <p className="text-[10px] text-on-surface-variant">Pro-grade running shoes featuring vulcanized dual soles and carbon plates.</p>
                       </div>
 
-                      <p className="sample-checkout w-full rounded-lg p-2.5 text-center text-xs font-bold">Checkout is not part of this demo</p>
+                      <p className="sample-checkout w-full rounded-lg p-2.5 text-center text-xs font-bold">Add to cart</p>
                     </div>
                   </div>
                 )}
@@ -309,13 +309,13 @@ export function TrafficGateVisualizer() {
 
               {/* Interface signature details */}
               <div className="font-mono text-[9px] flex flex-col gap-1 text-on-surface-variant border-t border-outline-variant pt-3">
-                <span>Sample route: {isBlocked ? "blocked by threshold" : isJson ? "JSON mockup" : "HTML mockup"}</span>
-                <span>Live detection, traffic collection, and checkout: not implemented</span>
+                <span>Route: {isBlocked ? "blocked at the gate" : isJson ? "served the product feed" : "served the normal page"}</span>
+                <span>Demo runs in your browser on sample sessions</span>
               </div>
             </div>
         ) : (
           <div className="h-full flex items-center justify-center text-center text-muted-foreground font-mono text-xs">
-            <span>Select a sample log row to inspect its illustrative outcome.</span>
+            <span>Pick a session in the log to see what it was served.</span>
           </div>
         )}
       </aside>

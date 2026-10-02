@@ -2,232 +2,202 @@ import { TrafficGateVisualizer } from "@/components/traffic-gate-visualizer";
 import { TrafficRoutingBoard } from "@/components/traffic-routing-board";
 import { JargonDecoder } from "@/components/jargon-decoder";
 import { SuiteHeader } from "@/components/suite-header";
+import { SuiteNext } from "@/components/suite-next";
 
 export default function LandingPage() {
   return (
-    <div className="turnstile-page relative min-h-screen bg-surface text-on-surface font-sans">
+    <div className="turnstile-page pk relative min-h-screen bg-surface text-on-surface font-sans">
 
       <SuiteHeader name="Turnstile" sections={[
         { label: "The gap", href: "#problem" },
-        { label: "Sample gate", href: "#demo" },
-        { label: "Limits", href: "#limits" },
+        { label: "How it works", href: "#how" },
+        { label: "Try the gate", href: "#demo" },
+        { label: "Weak spots", href: "#limits" },
         { label: "Sources", href: "#sources" },
       ]} />
 
       <main id="main" className="suite-main">
 
-        {/* ------------------------------ opening ----------------------------- */}
-        <section className="shell section hero-grid">
-          <div>
-            <h1 className="display">Commerce <span className="headline-ink">analytics</span><span className="hero-accent">for the agent era.</span></h1>
-            <p className="lede">
-              Shopping assistants can browse for people. Stores may need ways to distinguish
-              delegated shopping from other automated visits.
+        {/* ------------------------------ the poster ------------------------------ */}
+        <section className="pk-wrap pk-hero">
+          <div className="pk-hero-copy">
+            <p className="pk-kick"><span className="n">03</span> Prototype · Commerce</p>
+            <h1 className="pk-big">
+              <span className="a">Who's</span>
+              <span className="b">buying?</span>
+              <span className="c">A store used to know. Now an AI assistant can shop for you.</span>
+            </h1>
+            <p className="pk-dek">
+              Turnstile sorts a store's visitors into <b>people</b>, <b>shopping agents</b> and <b>scrapers</b>,
+              then gives each one what it should get: the normal page, a clean product feed, or a closed door.
             </p>
-            <p className="hero-note">Concept demo · fixed sample sessions · no live traffic or checkout.</p>
-            <div className="hero-cta">
-              <a href="#demo" className="suite-press inline-flex items-center gap-2 rounded bg-primary px-6 py-3 text-label-lg font-medium text-on-primary">
-                Try the gate
-              </a>
-              <a href="#problem" className="suite-press inline-flex items-center gap-2 rounded border border-outline px-6 py-3 text-label-lg font-medium">
-                Read the argument
-              </a>
+            <div className="pk-cta">
+              <a href="#demo" className="pk-btn pri">Try the gate ↓</a>
+              <a href="#problem" className="pk-btn">Why it matters</a>
             </div>
           </div>
 
-          <TrafficRoutingBoard />
-        </section>
-
-        {/* ----------------------------- statement ---------------------------- */}
-        <section className="statement suite-reveal">
-          <div className="shell">
-            <p className="line">Payment rails exist. Recognising delegated traffic is a separate task.</p>
-            <p className="by">
-              A product hypothesis: storefronts may need clearer ways to distinguish delegated shopping from other automated traffic.
-            </p>
+          <div className="pk-board">
+            <span className="pk-sticker">6 sessions<small>try it below</small></span>
+            <TrafficRoutingBoard />
           </div>
         </section>
 
-        {/* ------------------------------ problem ----------------------------- */}
-        <section className="shell section band" id="problem">
-          <div className="section-head">
-            <span className="idx">The gap</span>
-            <h2 className="h2">Payment protocols leave other storefront questions open.</h2>
-            <p className="note">Protocol milestones, then the separate task of presenting offers to agents.</p>
+        <div className="pk-wrap">
+          <div className="pk-glance">
+            <dl className="pk-facts">
+              <div><dt>3</dt><dd>kinds of visitor it tells apart</dd></div>
+              <div><dt>2</dt><dd>rules you can tune in the demo</dd></div>
+              <div><dt>60+</dt><dd>launch partners for Google's agent payments protocol <a className="lnk" href="#sources">[2]</a></dd></div>
+              <div><dt>Sep '25</dt><dd>agent checkout protocols go public <a className="lnk" href="#sources">[1]</a></dd></div>
+            </dl>
+            <ul className="pk-rows">
+              <li><span>What</span><b>A traffic classifier and a storefront agents can read</b></li>
+              <li><span>Built</span><b>Python classifier, plus the browser demo on this page</b></li>
+              <li><span>For</span><b>Online stores deciding how to treat AI shoppers</b></li>
+              <li><span>Stage</span><b>Prototype, running on six sample sessions</b></li>
+            </ul>
           </div>
+        </div>
 
-          <div className="rows">
-            <article className="row">
-              <span className="num">01</span>
-              <div>
-                <h3 className="title">Payment protocols are developing quickly</h3>
-                <p className="role">ACP, AP2, and a standards body</p>
-              </div>
-              <div>
-                <p className="desc">
-                  OpenAI and Stripe published the Agentic Commerce Protocol on 29 September 2025
-                  and open-sourced it. Google announced the Agent Payments Protocol on 16
-                  September 2025 with more than sixty launch partners including Mastercard,
-                  PayPal, American Express and Adyen, then donated it to the FIDO Alliance on 28
-                  April 2026. PayPal joined ACP that October, and Stripe shipped an Agentic
-                  Commerce Suite in December 2025. These announcements show continuing work on
-                  payment protocols; recognition and readable product information are separate
-                  questions for this concept to explore.
-                </p>
-              </div>
-            </article>
-
-            <article className="row">
-              <span className="num">02</span>
-              <div>
-                <h3 className="title">Product flows keep evolving</h3>
-                <p className="role">Public announcements don't explain causes</p>
-              </div>
-              <div>
-                <p className="desc">
-                  OpenAI and Stripe introduced ACP, with an initial ChatGPT shopping flow and Etsy
-                  as a launch merchant. OpenAI later described shopping research as a way to help
-                  people compare products. These public materials do not establish why individual
-                  product flows changed or how much they sold. Recognition and machine-readable
-                  offers remain hypotheses for this concept to explore.
-                </p>
-              </div>
-            </article>
-          </div>
-
-        </section>
-
-        {/* ----------------------------- mechanism ---------------------------- */}
-        <section className="shell section band">
-          <div className="section-head">
-            <span className="idx">3 parts</span>
-            <h2 className="h2">What sits above the rails</h2>
-            <p className="note">A product hypothesis: explore storefront work alongside payment protocols.</p>
-          </div>
-
-          <div className="rows">
-            <article className="row">
-              <span className="num">01</span>
-              <div><h3 className="title">Tell them apart</h3><p className="role">Session classification</p></div>
-              <div>
-                <p className="desc">
-                  Storefront rules may have limited signals for distinguishing delegated shopping
-                  from scraping. A production concept could explore behavioral and declared
-                  identity signals while accounting for uncertainty and the risk of mistaken
-                  classifications.
-                </p>
-              </div>
-            </article>
-            <article className="row">
-              <span className="num">02</span>
-              <div><h3 className="title">Explore possible false declines</h3><p className="role">A merchant-side hypothesis</p></div>
-              <div>
-                <p className="desc">
-                  A false decline can prevent a willing customer from completing a purchase.
-                  Whether delegated assistants encounter this in a particular store requires
-                  measurement; the prototype does not establish its frequency or revenue impact.
-                </p>
-              </div>
-            </article>
-            <article className="row">
-              <span className="num">03</span>
-              <div><h3 className="title">Serve a readable storefront</h3><p className="role">Machine-readable, not scraped</p></div>
-              <div>
-                <p className="desc">
-                  Once a session is known to be an agent, sending it a page built for human eyes
-                  may be hard for software to parse. A production version could offer structured
-                  product data alongside the human storefront, rather than requiring an agent to
-                  infer product details from page markup.
-                </p>
-              </div>
-            </article>
+        {/* ------------------------------- the band ------------------------------- */}
+        <section className="pk-band">
+          <div className="pk-wrap">
+            <p className="pk-kick on-blue"><span className="n">The bet</span></p>
+            <p className="line">Agents can already pay. <em>Most stores can't tell one from a scraper.</em></p>
+            <p className="by">The payment side got built first. The front door, where a store decides who it is talking to, did not.</p>
           </div>
         </section>
 
-        {/* ------------------------------- demo ------------------------------- */}
-        <section className="shell section band" id="demo">
-          <div className="section-head">
-            <span className="idx">Sandbox</span>
-            <h2 className="h2">Watch the gate sort a session</h2>
-            <p className="note">Six fixed sample sessions. Adjust the sample rules and inspect the illustrative outcomes.</p>
+        {/* ------------------------------- the gap -------------------------------- */}
+        <section className="pk-wrap pk-sec" id="problem">
+          <div className="pk-head">
+            <p className="pk-kick"><span className="dot" /> The gap</p>
+            <h2>The rails came first. <em>The door didn't.</em></h2>
           </div>
-          <TrafficGateVisualizer />
-        </section>
-
-        {/* ---------------------------- the objection -------------------------- */}
-        <section className="shell section band" id="limits">
-          <div className="section-head">
-            <span className="idx">Honest</span>
-            <h2 className="h2">Where this is weakest</h2>
-            <p className="note">The objections a merchant would actually raise.</p>
-          </div>
-          <div className="prose" style={{ display: "grid", gap: "1.25rem" }}>
-            <p>
-              <strong>Demand and trust need evidence.</strong> Public product changes alone do not
-              establish why a shopping feature changed or whether shoppers want delegated checkout.
-              The concept needs user and merchant research before its market hypothesis can be tested.
-            </p>
-            <p>
-              <strong>Behavioral signals can be imitated.</strong> A design could combine them
-              with declared or signed identity where available, and should treat each signal as
-              uncertain rather than as proof of intent.
-            </p>
-            <p>
-              <strong>Existing traffic tools shape the product boundary.</strong> Providers such
-              as Cloudflare and Akamai already offer bot-management capabilities. A commerce
-              concept would need to demonstrate a distinct use case, such as serving structured
-              catalog data, rather than assume general bot detection is missing.
-            </p>
+          <div className="pk-split">
+            <div className="pk-prose">
+              <p>
+                In September 2025 two payment protocols for AI shoppers went public within two weeks.
+                Google announced the <b>Agent Payments Protocol</b> on 16 September with more than sixty
+                partners, among them Mastercard, PayPal, American Express and Adyen, and later handed it to
+                the FIDO Alliance. OpenAI and Stripe published the <b>Agentic Commerce Protocol</b> on
+                29 September, alongside checkout inside ChatGPT.
+              </p>
+              <p>
+                Both answer how an agent pays. Neither answers the question a store faces first: is this
+                visit a person, an assistant buying for a person, or a bot copying the catalogue?
+              </p>
+              <p>
+                Get that wrong one way and the store turns away a paying customer. Get it wrong the other way
+                and it hands its prices to a competitor's scraper. Most bot filters were built to block
+                anything that isn't a human, which is exactly the wrong default once some bots arrive with a wallet.
+              </p>
+            </div>
+            <figure className="pk-quote">
+              <p>A bot filter that blocks every agent is now <em>blocking customers.</em></p>
+              <small>The idea Turnstile is built around</small>
+            </figure>
           </div>
         </section>
 
-        {/* ------------------------------ decoder ----------------------------- */}
-        <section className="shell section band">
-          <div className="section-head">
-            <span className="idx">Plain</span>
-            <h2 className="h2">The words, without the jargon</h2>
-            <p className="note">For anyone reading this who does not build software.</p>
+        {/* ------------------------------- how it works ------------------------------- */}
+        <section className="pk-wrap pk-sec" id="how">
+          <div className="pk-head">
+            <p className="pk-kick"><span className="dot" /> How it works</p>
+            <h2>Three jobs at <em>the door.</em></h2>
           </div>
-          <JargonDecoder />
-        </section>
-
-        {/* ------------------------------ sources ----------------------------- */}
-        <section className="shell section band" id="sources">
-          <div className="section-head">
-            <span className="idx">Checkable</span>
-            <h2 className="h2">Sources</h2>
-            <p className="note">Every date and figure above, traceable.</p>
-          </div>
-          <ol className="src">
+          <ol className="pk-cards">
             <li>
-              Agentic Commerce Protocol, published by OpenAI and Stripe, 29 September 2025.{" "}
-              <a href="https://agenticcommerce.dev" target="_blank" rel="noreferrer">agenticcommerce.dev</a>
+              <p className="pk-kick"><span className="n">1</span> Sort</p>
+              <h3>Tell them apart</h3>
+              <p>Read how a session behaves: mouse movement, request speed, what it says it is. Weigh the signals together, because any one of them can be faked.</p>
+              <span className="eg">Human: 87 activity, 0.8 req/s</span>
             </li>
             <li>
-              Agent Payments Protocol announced by Google with 60+ partners, 16 September 2025;
-              donated to the FIDO Alliance, 28 April 2026.{" "}
-              <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol" target="_blank" rel="noreferrer">Google Cloud</a>
+              <p className="pk-kick"><span className="n">2</span> Protect</p>
+              <h3>Don't lose the buyer</h3>
+              <p>An agent buying for someone is a customer. It gets let in. Only traffic that looks like bulk copying gets stopped.</p>
+              <span className="eg">Scraper: 38 req/s, blocked</span>
             </li>
             <li>
-              OpenAI's announcement of shopping in ChatGPT and Instant Checkout.{" "}
-              <a href="https://openai.com/index/buy-it-in-chatgpt/" target="_blank" rel="noreferrer">OpenAI</a>
+              <p className="pk-kick"><span className="n">3</span> Serve</p>
+              <h3>Speak its language</h3>
+              <p>A page built for eyes is hard for software to read. Agents get price, stock and specs as clean data instead of guessing from the layout.</p>
+              <span className="eg">Agent: served a JSON product feed</span>
             </li>
           </ol>
         </section>
 
-        {/* ------------------------------- footer ----------------------------- */}
-        <footer className="shell section band">
-          <div>
-            <h2 className="h2" style={{ fontSize: "1.5rem" }}>Built by Bahniman Talukdar</h2>
-            <p className="prose" style={{ marginTop: "0.75rem", fontSize: "0.9375rem" }}>
-              One of four prototypes exploring changes in the agent economy.
-            </p>
-            <p style={{ display: "flex", gap: "1.5rem", marginTop: "1.5rem", flexWrap: "wrap" }}>
-              <a className="lnk" href="https://bahniman.github.io">Portfolio</a>
-              <a className="lnk" href="https://github.com/Bahniman/turnstile" target="_blank" rel="noreferrer">Source</a>
-            </p>
+        {/* -------------------------------- the demo -------------------------------- */}
+        <section className="pk-wrap pk-sec" id="demo">
+          <div className="pk-head">
+            <p className="pk-kick"><span className="dot" /> Try it</p>
+            <h2>Run the <em>gate.</em></h2>
+            <p className="pk-lede">Six sessions walk up to the store. Play the stream, move the two rules, and click any session to see exactly what it was served.</p>
           </div>
-        </footer>
+          <div className="pk-stage">
+            <span className="pk-stage-tag">Live in your browser</span>
+            <TrafficGateVisualizer />
+          </div>
+        </section>
+
+        {/* ------------------------------- weak spots ------------------------------- */}
+        <section className="pk-wrap pk-sec" id="limits">
+          <div className="pk-head">
+            <p className="pk-kick"><span className="dot" /> Where this is weakest</p>
+            <h2>What a merchant <em>would ask.</em></h2>
+          </div>
+          <ul className="pk-weak">
+            <li>
+              <p className="q">Do shoppers even want an assistant buying for them?</p>
+              <p className="ans">Not proven yet. My bet is that clear controls and a visible receipt would earn that trust, but it needs shopper research before anyone builds on it.</p>
+            </li>
+            <li>
+              <p className="q">Behaviour signals can be copied.</p>
+              <p className="ans">True. That's why the design pairs behaviour with what an agent declares about itself, and signed identity where the protocols offer it. No single signal decides.</p>
+            </li>
+            <li>
+              <p className="q">Cloudflare and Akamai already sell bot management.</p>
+              <p className="ans">They do, and Turnstile shouldn't compete on detection. The gap is what happens after: serving an agent a clean product feed instead of a page meant for people.</p>
+            </li>
+          </ul>
+        </section>
+
+        {/* ---------------------------- decoder + sources ---------------------------- */}
+        <section className="pk-wrap pk-sec" id="sources">
+          <div className="pk-two">
+            <div>
+              <div className="pk-head">
+                <p className="pk-kick"><span className="dot" /> Plain English</p>
+                <h2>The <em>words.</em></h2>
+              </div>
+              <JargonDecoder />
+            </div>
+            <div>
+              <div className="pk-head">
+                <p className="pk-kick"><span className="dot" /> Checkable</p>
+                <h2><em>Sources.</em></h2>
+              </div>
+              <ol className="pk-src">
+                <li>
+                  Agentic Commerce Protocol, published by OpenAI and Stripe, 29 September 2025.{" "}
+                  <a href="https://agenticcommerce.dev" target="_blank" rel="noreferrer">agenticcommerce.dev</a>
+                </li>
+                <li>
+                  Agent Payments Protocol, announced by Google with 60+ partners, 16 September 2025; donated to the FIDO Alliance, 28 April 2026.{" "}
+                  <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol" target="_blank" rel="noreferrer">Google Cloud</a>
+                </li>
+                <li>
+                  OpenAI, shopping and Instant Checkout in ChatGPT.{" "}
+                  <a href="https://openai.com/index/buy-it-in-chatgpt/" target="_blank" rel="noreferrer">OpenAI</a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <SuiteNext current="Turnstile" />
       </main>
     </div>
   );

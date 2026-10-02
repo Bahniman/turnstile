@@ -1,5 +1,6 @@
 @import "./riso-tokens.css";
 @import "./riso-suite.css";
+@import "./poster.css";
 @import "tailwindcss" source(none);
 @source "../src";
 @custom-variant dark (&:is(.dark *));
